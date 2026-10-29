@@ -2,7 +2,7 @@
 """poh marketing · constrói o ficheiro cifrado da Área de Cliente (clientes.json).
 
 Uso:  python3 build_portal.py <pasta_raw> <saida.json>
-A pasta_raw tem 6 ficheiros JSON, cada um com a lista "results" de uma consulta SQL ao Notion:
+A pasta_raw tem 6 ficheiros JSON, cada um com a lista "results" de uma consulta ao Notion (modo view ou SQL):
   clientes.json publicacoes.json gravacoes.json ideias.json guioes.json relatorios.json
 Cada cliente com "Código do portal" preenchido recebe um bloco cifrado (AES-GCM, chave PBKDF2 do código).
 Só quem tem o código consegue ler o seu bloco.
@@ -84,7 +84,7 @@ def main(raw, out):
         I = [{"t": r.get("Ideia"), "e": r.get("Estado") or "", "f": r.get("Formato") or "", "pi": r.get("Pilar") or "",
               "hk": r.get("Hook") or "", "ds": r.get("Descrição") or ""}
              for r in mine(ideias) if r.get("Ideia") and (r.get("Estado") or "") != "Descartada"]
-        S = [{"t": r.get("Guião"), "e": r.get("Estado") or "", "f": r.get("Formato") or "", "g": r.get("Gancho (0–3s)") or "",
+        S = [{"t": r.get("Guião"), "e": r.get("Estado") or "", "f": r.get("Formato") or "", "g": r.get("Gancho (0–3s)") or r.get("Gancho (0-3s)") or "",
               "tx": r.get("Texto no ecrã") or "", "pr": r.get("Preparar antes") or "", "au": r.get("Áudio") or "",
               "leg": r.get("Legenda") or "", "dur": r.get("Duração (s)"), "d": dt(r.get("date:Data de gravação:start"))[0]}
              for r in mine(guioes) if r.get("Guião")]

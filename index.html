@@ -911,7 +911,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   if(!reduce)setInterval(()=>{if(!document.hidden)pushNotif()},3800);
 
   /* ---------- Contadores ---------- */
-  const counters=[...document.querySelectorAll('#counters b[data-to]')];
+  const counters=[];
   if(!reduce&&'IntersectionObserver' in window){
     const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const to=+e.target.dataset.to;let k=0;const steps=18;const tick=()=>{k++;e.target.textContent=Math.round(to*k/steps);if(k<steps)requestAnimationFrame(tick)};e.target.textContent='0';requestAnimationFrame(tick)})},{threshold:.6});
     counters.forEach(c=>io.observe(c));
@@ -1590,5 +1590,37 @@ details.gs dd{margin:0 0 4px;font-size:14.5px;white-space:pre-wrap}
 })();
 </script>
 
+<style>
+.cu-pop{display:inline-block;animation:cuPop .55s cubic-bezier(.34,1.56,.64,1)}
+@keyframes cuPop{0%{transform:scale(.85)}60%{transform:scale(1.12)}100%{transform:none}}
+</style>
+<script>
+(function(){
+  /* números a crescer: 0 → valor sempre que aparecem no ecrã */
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window))return;
+  const SEL='.kstat b, .counter b, #plans .price, .plan-card b, .app .pr span';
+  const NUM=/\d+(?:[.,]\d+)?/g;
+  function textNodes(el){const out=[];const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))if(/\d/.test(n.nodeValue)&&!n.parentElement.closest('small'))out.push(n);return out}
+  function run(el){
+    if(el._cuRaf)cancelAnimationFrame(el._cuRaf);
+    const nodes=textNodes(el);if(!nodes.length)return;
+    const items=nodes.map(n=>{const orig=n._cuOrig||(n._cuOrig=n.nodeValue);return{n,orig,parts:orig.split(NUM),nums:(orig.match(NUM)||[]).map(x=>({s:x,v:parseFloat(x.replace(',','.')),dec:(x.split(/[.,]/)[1]||'').length,sep:x.includes(',')?',':'.'}))}});
+    const dur=Math.min(1600,700+Math.max(...items.flatMap(i=>i.nums.map(x=>x.v)),1)*1.2);let t0=null;
+    const ease=t=>1-Math.pow(1-t,3);
+    const frame=now=>{if(t0===null)t0=now;const p=Math.min(1,(now-t0)/dur),e=ease(p);
+      items.forEach(i=>{let s='';i.parts.forEach((part,k)=>{s+=part;const x=i.nums[k];if(x){let v=x.v*e;s+=p>=1?x.s:(x.dec?v.toFixed(x.dec).replace('.',x.sep):Math.round(v))}});i.n.nodeValue=s});
+      if(p<1)el._cuRaf=requestAnimationFrame(frame);else{el.classList.remove('cu-pop');void el.offsetWidth;el.classList.add('cu-pop')}};
+    el._cuRaf=requestAnimationFrame(frame);
+  }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!e.target._cuIn){e.target._cuIn=1;run(e.target)}}else e.target._cuIn=0}),{threshold:.6});
+  const watch=root=>root.querySelectorAll(SEL).forEach(el=>{if(!el._cuW){el._cuW=1;io.observe(el)}});
+  watch(document);
+  // planos e outros blocos que mudam (trocar Gravamos nós / Gravas tu)
+  const plans=document.getElementById('plans');
+  if(plans)new MutationObserver(()=>{plans.querySelectorAll('.price').forEach(el=>{el._cuW=0;el._cuIn=0});watch(plans);plans.querySelectorAll('.price').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){el._cuIn=1;run(el)}})}).observe(plans,{childList:true});
+  setInterval(()=>watch(document),3000);
+})();
+</script>
 </body>
 </html>

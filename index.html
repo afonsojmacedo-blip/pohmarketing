@@ -9,6 +9,10 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="poh">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="poh marketing">
 <meta property="og:title" content="poh marketing · Social media no Porto">
@@ -1803,6 +1807,47 @@ details.gs dd{margin:0 0 4px;font-size:14.5px;white-space:pre-wrap}
   const plans=document.getElementById('plans');
   if(plans)new MutationObserver(()=>{plans.querySelectorAll('.price').forEach(el=>{el._cuW=0;el._cuIn=0});watch(plans);plans.querySelectorAll('.price').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){el._cuIn=1;run(el)}})}).observe(plans,{childList:true});
   setInterval(()=>watch(document),3000);
+})();
+</script>
+<!-- ====== Instalar app ====== -->
+<button type="button" class="inst-fab" id="instFab" hidden>Instalar app</button>
+<div class="inst" id="inst" hidden role="dialog" aria-modal="true" aria-labelledby="instT">
+  <div class="inst-box">
+    <button type="button" class="inst-x" id="instX" aria-label="Fechar">×</button>
+    <p class="label">App poh marketing</p>
+    <h2 id="instT">Tem a poh no ecrã do telemóvel.</h2>
+    <p class="muted">Abre como uma app, com a tua Área de Cliente sempre à mão. Atualiza sozinha.</p>
+    <ol id="instSteps"></ol>
+  </div>
+</div>
+<style>
+.inst-fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:40;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--cyan);color:var(--night);font:700 16px/1 var(--f-body);box-shadow:0 14px 30px -14px rgba(10,31,68,.7);cursor:pointer}
+.inst{position:fixed;inset:0;z-index:60;background:rgba(6,18,42,.6);display:grid;place-items:end center;padding:16px}
+.inst-box{position:relative;width:min(460px,100%);background:var(--surface);color:var(--ink);border-radius:22px;padding:26px 22px calc(22px + env(safe-area-inset-bottom,0px));display:grid;gap:12px}
+.inst-box h2{font-size:24px}
+.inst-box ol{margin:4px 0 0;padding-left:20px;display:grid;gap:8px}
+.inst-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:28px;cursor:pointer}
+</style>
+<script>
+(()=>{
+  if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+  const ua=navigator.userAgent,ios=/iphone|ipad|ipod/i.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1),mobile=ios||/android/i.test(ua);
+  const fab=document.getElementById('instFab'),dlg=document.getElementById('inst'),steps=document.getElementById('instSteps');
+  let ev=null;
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();ev=e;if(!standalone)fab.hidden=false});
+  if(!standalone&&mobile)fab.hidden=false;
+  fab.addEventListener('click',async()=>{
+    if(ev){ev.prompt();const r=await ev.userChoice;if(r.outcome==='accepted')fab.hidden=true;ev=null;return}
+    steps.innerHTML=ios?'<li>No Safari, toca em <b>Partilhar</b> (o quadrado com a seta).</li><li>Escolhe <b>Adicionar ao ecrã principal</b>.</li><li>Toca em <b>Adicionar</b>. Pronto!</li>'
+      :'<li>No Chrome, toca no menu <b>⋮</b>.</li><li>Escolhe <b>Instalar aplicação</b> ou <b>Adicionar ao ecrã principal</b>.</li><li>Confirma. Pronto!</li>';
+    dlg.hidden=false;
+  });
+  const close=()=>dlg.hidden=true;
+  document.getElementById('instX').addEventListener('click',close);
+  dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+  addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  addEventListener('appinstalled',()=>fab.hidden=true);
 })();
 </script>
 </body>

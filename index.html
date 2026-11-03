@@ -246,6 +246,73 @@ section.tint{background:var(--tint)}
 @media (max-width:980px){.folio{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:700px){.folio{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+/* clients: total followers band + client cards */
+.fol{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(22px,4vw,52px);align-items:center;background:#8FB3FF;color:#0A1F44;border-radius:22px;padding:clamp(24px,4.5vw,48px);margin-bottom:32px}
+.fol::after{content:"";position:absolute;right:-90px;top:-110px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.22);pointer-events:none}
+.fol>*{position:relative;z-index:1;min-width:0}
+.fol-k{font-weight:600;font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;color:#0A1F44}
+.fol-num{font:800 clamp(56px,9vw,120px)/1.1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:16px;white-space:nowrap}
+.fol-cap{font-weight:600;font-size:clamp(17px,1.8vw,21px);line-height:1.3;margin-top:14px;max-width:24ch}
+.fol-list{list-style:none;margin:0;padding:0;display:grid}
+.fol-list li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;border-bottom:2px solid rgba(10,31,68,.22)}
+.fol-list li:first-child{border-top:2px solid rgba(10,31,68,.22)}
+.fol-list b{display:block;font:700 clamp(17px,2vw,23px)/1.1 var(--f-display);text-transform:uppercase;letter-spacing:-.01em}
+.fol-list span{display:block;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#1B3366;margin-top:4px}
+.fol-list em{font:700 clamp(16px,1.8vw,20px)/1 var(--f-display);font-style:normal;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.cl-card{display:grid;gap:12px;align-content:start;min-width:0}
+.cl-media{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:16px;overflow:hidden;background:var(--night);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.cl-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.cl-card:hover .cl-media{transform:translateY(-6px);box-shadow:0 26px 44px -26px rgba(10,31,68,.6)}
+.cl-card:hover .cl-media img{transform:scale(1.08)}
+.cl-tag{position:absolute;left:10px;top:10px;max-width:calc(100% - 20px);background:rgba(10,31,68,.78);color:#fff;font:600 11.5px/1.2 var(--f-body);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.cl-st{display:flex;gap:18px;padding:2px 2px 0}
+.cl-st b{display:block;font:700 clamp(18px,1.9vw,22px)/1.1 var(--f-display);color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.cl-st span{font-size:12.5px;color:var(--muted)}
+.cl-card h3{font-size:20px}
+.cl-card p{font-size:15.5px;color:var(--muted);line-height:1.5}
+.cl-links{display:flex;flex-wrap:wrap;gap:8px}
+.cl-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:600 14.5px/1 var(--f-body);text-decoration:none;transition:border-color .2s}
+.cl-links a:hover{border-color:var(--cyan)}
+.cl-note{margin-top:20px;font-size:14px;color:var(--muted)}
+@media (max-width:980px){.cl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.fol{grid-template-columns:1fr}}
+@media (max-width:420px){.cl-grid{gap:14px}.cl-st{gap:12px}.cl-links a{padding:0 11px;font-size:13.5px}}
+
+/* design gráfico */
+.gd-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.gd-item{margin:0;display:grid;gap:12px;align-content:start;min-width:0}
+.gd-item figcaption{font-size:15.5px;color:var(--muted);line-height:1.45}
+.gd-item figcaption b{display:block;color:var(--ink);font-size:17.5px;margin-bottom:2px}
+.gd-mock{aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;display:grid;place-items:center;background:var(--chip);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.gd-item:hover .gd-mock{transform:translateY(-6px);box-shadow:0 24px 40px -24px rgba(10,31,68,.55)}
+.gd-mock img{width:100%;height:100%;object-fit:cover;display:block}
+.gd-card{background:#E8E2D6;gap:10px;align-content:center}
+.gd-card>div{width:72%;aspect-ratio:85/55;border-radius:6px;box-shadow:0 10px 20px -10px rgba(0,0,0,.45)}
+.gd-card .c1{background:#121212;color:#EDE8DF;padding:10px 12px;display:flex;flex-direction:column;justify-content:flex-end;transform:rotate(-6deg)}
+.gd-card .c1 b{font:400 18px/1 Impact,"Arial Narrow Bold",sans-serif;color:#D9B44A;text-transform:uppercase}
+.gd-card .c1 span{font-size:10px;letter-spacing:.08em}
+.gd-card .c2{background:#D9B44A;display:grid;place-items:center;transform:rotate(4deg) translateX(10%)}
+.gd-card .c2 i{width:26px;height:26px;border-radius:50%;border:3px solid #121212}
+.gd-mat{background:#F3EDE2}
+.gd-mat::before{content:"";position:absolute;inset:12% 10%;border:2px solid #1E3A6E;border-radius:6px}
+.gd-mat .ring{width:42%;aspect-ratio:1;border-radius:50%;border:10px solid rgba(30,58,110,.18)}
+.gd-mat .lines{position:absolute;left:18%;right:18%;bottom:18%;display:grid;gap:6px}
+.gd-mat .lines i{height:5px;border-radius:3px;background:#B4532A;opacity:.55}
+.gd-mat .lines i:nth-child(2){width:70%}.gd-mat .lines i:nth-child(3){width:45%}
+.gd-menu{background:#1E3A6E;color:#F3EDE2;align-content:start;justify-items:stretch;gap:9px;padding:22% 16%}
+.gd-menu b{font:400 26px/1 Georgia,serif;text-align:center;margin-bottom:6px}
+.gd-menu span{height:6px;border-radius:3px;background:rgba(243,237,226,.45)}
+.gd-menu span:nth-child(odd){width:75%}
+.gd-flyer{background:linear-gradient(160deg,#2350C8,#0A1F44);color:#fff;align-content:center;justify-items:start;gap:8px;padding:0 14%}
+.gd-flyer small{font:700 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+.gd-flyer b{font:800 clamp(20px,2.4vw,28px)/1.05 var(--f-display)}
+.gd-flyer span{background:var(--cyan);color:var(--night);font:600 12px/1 var(--f-body);padding:8px 12px;border-radius:999px}
+.gd-note{margin-top:18px;font-size:14px;color:var(--muted)}
+.gd-cta{margin-top:18px}
+@media (max-width:980px){.gd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.gd-grid{gap:14px}.gd-item figcaption{font-size:14.5px}}
+
 /* journey */
 .journey{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
 .jsteps{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:s}
@@ -405,6 +472,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
       <a href="#sobre">Quem somos</a>
       <a href="#servicos">Serviços</a>
       <a href="#planos">Planos</a>
+      <a href="#trabalhos">Clientes</a>
+      <a href="#grafico">Design gráfico</a>
       <a href="#processo">Do início ao post</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -511,6 +580,90 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     </div>
   </section>
 
+
+  <!-- CLIENTES -->
+  <section class="block" id="trabalhos">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Clientes</p>
+        <h2>Marcas com quem já trabalhámos.</h2>
+        <p>Restaurantes, uma barbearia e uma loja de decoração cujas redes acompanhámos, do plano à publicação.</p>
+      </div>
+
+      <div class="fol">
+        <div class="fol-main">
+          <p class="fol-k">Seguidores somados</p>
+          <div class="fol-num" id="folTotal" aria-label="11.800 seguidores">11.800</div>
+          <p class="fol-cap">seguidores nas contas com que trabalhámos</p>
+        </div>
+        <ul class="fol-list">
+          <li><div><b>Allma di Mare</b><span>Restaurante italiano</span></div><em>2.558</em></li>
+          <li><div><b>Dona Barba</b><span>Barbearia</span></div><em>1.035</em></li>
+          <li><div><b>Gosto Muito</b><span>Cozinha tradicional portuguesa</span></div><em>499</em></li>
+          <li><div><b>Pérola de Algodão</b><span>Lembranças e decoração</span></div><em>7.708</em></li>
+        </ul>
+      </div>
+
+      <div class="cl-grid">
+        <article class="cl-card">
+          <div class="cl-media"><img src="clientes/allma-di-mare.jpg" alt="Pizza a ser preparada num reel do Allma di Mare" loading="lazy"><span class="cl-tag">Restaurante italiano</span></div><div class="cl-st"><div><b>2.558</b><span>seguidores</span></div><div><b>140</b><span>publicações</span></div></div>
+          <h3>Allma di Mare</h3>
+          <p>Esposende. Atmosfera, luz quente e comida a sair do forno: feed e reels que dão fome.</p>
+          <div class="cl-links"><a href="https://www.instagram.com/allma.di.mare/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/DA1dzjrxdyu/" target="_blank" rel="noopener">Ver reel ↗</a></div>
+        </article>
+        <article class="cl-card">
+          <div class="cl-media"><img src="clientes/dona-barba.jpg" alt="Barbeiro a terminar um corte num reel da Dona Barba" loading="lazy"><span class="cl-tag">Barbearia</span></div><div class="cl-st"><div><b>1.035</b><span>seguidores</span></div><div><b>41</b><span>publicações</span></div></div>
+          <h3>Dona Barba</h3>
+          <p>Reels verticais com o detalhe do corte, o ambiente e o antes e depois de cada cliente.</p>
+          <div class="cl-links"><a href="https://www.instagram.com/donabarba21/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/DHUIujgNMfn/" target="_blank" rel="noopener">Reel 1 ↗</a><a href="https://www.instagram.com/reel/DBW8swFuLhl/" target="_blank" rel="noopener">Reel 2 ↗</a></div>
+        </article>
+        <article class="cl-card">
+          <div class="cl-media"><img src="clientes/gosto-muito.jpg" alt="Chef na cozinha num reel do Gosto Muito" loading="lazy"><span class="cl-tag">Cozinha tradicional</span></div><div class="cl-st"><div><b>499</b><span>seguidores</span></div><div><b>28</b><span>publicações</span></div></div>
+          <h3>Gosto Muito</h3>
+          <p>Barcelos. Planeamento, fotografia, vídeo e legendas: a sala, a cozinha e as pessoas por trás dos pratos.</p>
+          <div class="cl-links"><a href="https://www.instagram.com/_gosto_muito/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/C_8nkufMpyq/" target="_blank" rel="noopener">Reel 1 ↗</a><a href="https://www.instagram.com/reel/DMn3R92Mzct/" target="_blank" rel="noopener">Reel 2 ↗</a></div>
+        </article>
+        <article class="cl-card">
+          <div class="cl-media"><img src="clientes/perola-de-algodao.jpg" alt="Caixa de produto a ser aberta num reel da Pérola de Algodão" loading="lazy"><span class="cl-tag">Lembranças e decoração</span></div><div class="cl-st"><div><b>7.708</b><span>seguidores</span></div><div><b>471</b><span>publicações</span></div></div>
+          <h3>Pérola de Algodão</h3>
+          <p>Barcelos. Tons da marca, produto em detalhe e conteúdo que explica, inspira e vende.</p>
+          <div class="cl-links"><a href="https://www.instagram.com/peroladealgodao/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/p/DN6XWbCDDuf/" target="_blank" rel="noopener">Ver post ↗</a></div>
+        </article>
+      </div>
+      <p class="cl-note">Seguidores e publicações à data das últimas capturas dos perfis.</p>
+    </div>
+  </section>
+
+  <!-- DESIGN GRÁFICO -->
+  <section class="block tint" id="grafico">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Design gráfico</p>
+        <h2>Também para imprimir.</h2>
+        <p>Cartões de visita, papéis de mesa, menus e flyers com a imagem da tua marca. Fazemos dentro do plano ou por pedido.</p>
+      </div>
+      <div class="gd-grid">
+        <figure class="gd-item">
+          <div class="gd-mock gd-card" aria-hidden="true"><div class="c1"><b>Nome</b><span>Barbearia · Porto</span></div><div class="c2"><i></i></div></div>
+          <figcaption><b>Cartões de visita</b>Frente e verso, prontos para a gráfica.</figcaption>
+        </figure>
+        <figure class="gd-item">
+          <div class="gd-mock gd-mat" aria-hidden="true"><div class="ring"></div><div class="lines"><i></i><i></i><i></i></div></div>
+          <figcaption><b>Papéis de mesa</b>Individuais para restaurantes e cafés.</figcaption>
+        </figure>
+        <figure class="gd-item">
+          <div class="gd-mock gd-menu" aria-hidden="true"><b>Menu</b><span></span><span></span><span></span><span></span><span></span></div>
+          <figcaption><b>Menus e cartas</b>Fáceis de ler e de atualizar.</figcaption>
+        </figure>
+        <figure class="gd-item">
+          <div class="gd-mock gd-flyer" aria-hidden="true"><small>Sábado</small><b>Noite de fados</b><span>Reserva já</span></div>
+          <figcaption><b>Flyers e cartazes</b>Para eventos, promoções e montra.</figcaption>
+        </figure>
+      </div>
+      <p class="gd-note">Exemplos ilustrativos. Os trabalhos reais chegam em breve.</p>
+      <div class="gd-cta"><a class="btn btn-cyan" href="https://wa.me/351919313540?text=Ol%C3%A1!%20Queria%20um%20or%C3%A7amento%20para%20trabalhos%20gr%C3%A1ficos." target="_blank" rel="noopener">Pedir orçamento</a></div>
+    </div>
+  </section>
 
   <!-- DO INÍCIO AO POST -->
   <section class="block" id="processo">
@@ -935,6 +1088,15 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
     counters.forEach(c=>io.observe(c));
   }
 
+  /* ---------- Seguidores somados (clientes) ---------- */
+  const folEl=document.getElementById('folTotal');
+  if(folEl&&!reduce&&'IntersectionObserver' in window){
+    const fmtN=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+    const fo=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;fo.unobserve(folEl);const to=11800,t0=performance.now(),D=1600;
+      const tick=now=>{const p=Math.min(1,(now-t0)/D);folEl.textContent=fmtN(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)})},{threshold:.5});
+    fo.observe(folEl);
+  }
+
   /* ---------- Serviços ---------- */
   const SVC=[
     {k:'redes',t:'Gestão de redes sociais',s:'Instagram, TikTok e Facebook',ic:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>',
@@ -951,7 +1113,10 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
      l:['Produtos e serviços','Espaço e ambiente','Equipa, com nome e história'],f:['Todos os negócios']},
     {k:'design',t:'Design',s:'Templates e tom',ic:'<path d="M12 3a9 9 0 1 0 9 9c0-1.7-1.3-2-2.5-2H16a2 2 0 0 1 0-4h.5"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/>',
      d:'Uma imagem coerente em todo o lado.',
-     l:['Templates para posts e stories','Tabelas de preços e catálogos','Cartões de fidelização'],f:['Setup inicial']}
+     l:['Templates para posts e stories','Tabelas de preços e catálogos','Cartões de fidelização'],f:['Setup inicial']},
+    {k:'grafico',t:'Trabalhos gráficos',s:'Cartões, papéis de mesa e mais',ic:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h6M7 14h4"/>',
+     d:'Design para imprimir, com a imagem da tua marca. Também por pedido, fora dos planos.',
+     l:['Cartões de visita','Papéis de mesa e individuais','Menus e cartas','Flyers, cartazes e autocolantes'],f:['Restauração','Comércio','Todos os negócios']}
   ];
   const svcList=document.getElementById('svcList'),svcPanel=document.getElementById('svcPanel');
   svcList.innerHTML=SVC.map((s,k)=>`<button class="svc-btn" role="tab" type="button" id="svc-${s.k}" aria-controls="svcPanel" aria-selected="${k===0}"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">${s.ic}</svg></span><span><b>${POH.tx(s.t,'svc-t')}</b><small>${POH.tx(s.s,'svc-s')}</small></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>`).join('');
@@ -1064,7 +1229,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   const navLinks=[...document.querySelectorAll('.nav a')];
   if('IntersectionObserver' in window){
     const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
-    ['sobre','servicos','planos','exemplos','processo','contacto'].forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s)});
+    ['sobre','servicos','planos','exemplos','trabalhos','grafico','processo','contacto'].forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s)});
   }
 
   /* ---------- Apresentação ---------- */
@@ -1092,7 +1257,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   /* revelar ao fazer scroll */
   if(reduce||!('IntersectionObserver' in window))return;
   document.documentElement.classList.add('js-anim');
-  const groups=[['.head',0],['.value',.12],['.counters',0],['.svc',0],['.way',.15],['.plans',0],['.piece',.08],['.area-grid,.app,.app-frame',0],['.contact .wrap>*',.1]];
+  const groups=[['.head',0],['.value',.12],['.counters',0],['.svc',0],['.way',.15],['.plans',0],['.piece',.08],['.fol',0],['.cl-card',.1],['.gd-item',.1],['.area-grid,.app,.app-frame',0],['.contact .wrap>*',.1]];
   groups.forEach(([sel,step])=>{document.querySelectorAll(sel).forEach((el,i)=>{if(el.closest('#deck'))return;el.setAttribute('data-rv','');el.style.setProperty('--rvd',(step*(i%4)).toFixed(2)+'s')})});
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting)e.target.classList.add('rv-in');

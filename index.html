@@ -144,6 +144,7 @@ section.tint{background:var(--tint)}
 .counter b{display:block;font:700 26px/1.05 var(--f-display);color:var(--ink);font-variant-numeric:tabular-nums}
 .counter.first b{font-size:20px;line-height:1.3;color:var(--accent-ink)}
 .counter span{font-size:14.5px;color:var(--muted)}
+.vid-big{margin-top:12px;width:100%}
 .video-frame{width:100%;border:0;display:block;border-radius:16px;background:transparent;min-height:240px}
 @media (max-width:900px){.about{grid-template-columns:1fr}.about .vid{justify-self:stretch;max-width:none}.values{grid-template-columns:1fr}}
 
@@ -183,7 +184,8 @@ section.tint{background:var(--tint)}
 .toggle{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px;gap:4px;margin-bottom:24px}
 .toggle button{border:0;background:transparent;color:var(--ink);font:600 16px/1 var(--f-body);padding:12px 18px;border-radius:999px;cursor:pointer;min-height:44px}
 .toggle button[aria-pressed="true"]{background:var(--night);color:var(--on-night)}
-.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:860px}
+.plan .tag.tag-soft{background:var(--chip);color:var(--accent-ink)}
 .plan{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:transform .2s ease,box-shadow .2s ease}
 .plan:hover{transform:translateY(-4px);box-shadow:0 20px 40px -28px rgba(10,31,68,.45)}
 .plan.pop{border:2px solid var(--cobalt)}
@@ -250,72 +252,76 @@ section.tint{background:var(--tint)}
 @media (max-width:980px){.folio{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:700px){.folio{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* clients: total followers band + client cards */
-.fol{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(22px,4vw,52px);align-items:center;background:#8FB3FF;color:#0A1F44;border-radius:22px;padding:clamp(24px,4.5vw,48px);margin-bottom:32px}
+/* clients: total followers band + portfolio */
+.fol{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(22px,4vw,52px);align-items:center;background:#8FB3FF;color:#0A1F44;border-radius:22px;padding:clamp(24px,4.5vw,48px);margin-bottom:28px}
 .fol::after{content:"";position:absolute;right:-90px;top:-110px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.22);pointer-events:none}
 .fol>*{position:relative;z-index:1;min-width:0}
 .fol-k{font-weight:600;font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;color:#0A1F44}
-.fol-num{font:800 clamp(56px,9vw,120px)/1.1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:16px;white-space:nowrap}
-.fol-cap{font-weight:600;font-size:clamp(17px,1.8vw,21px);line-height:1.3;margin-top:14px;max-width:24ch}
+.fol-num{font:800 clamp(52px,8.4vw,112px)/1.1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:16px;white-space:nowrap}
+.fol-num small{font-size:.42em;letter-spacing:-.01em;margin-left:.12em}
+.fol-cap{font-weight:600;font-size:clamp(17px,1.8vw,21px);line-height:1.3;margin-top:14px;max-width:26ch}
 .fol-list{list-style:none;margin:0;padding:0;display:grid}
-.fol-list li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;border-bottom:2px solid rgba(10,31,68,.22)}
+.fol-list li{border-bottom:2px solid rgba(10,31,68,.22)}
 .fol-list li:first-child{border-top:2px solid rgba(10,31,68,.22)}
-.fol-list b{display:block;font:700 clamp(17px,2vw,23px)/1.1 var(--f-display);text-transform:uppercase;letter-spacing:-.01em}
-.fol-list span{display:block;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#1B3366;margin-top:4px}
+.fol-list button{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;padding:11px 4px;background:transparent;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;border-radius:8px;transition:background .2s,padding .2s}
+.fol-list button:hover,.fol-list button[aria-pressed="true"]{background:rgba(255,255,255,.3);padding-inline:12px}
+.fol-list b{display:block;font:700 clamp(16px,1.9vw,22px)/1.1 var(--f-display);text-transform:uppercase;letter-spacing:-.01em}
+.fol-list span{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#1B3366;margin-top:4px}
 .fol-list em{font:700 clamp(16px,1.8vw,20px)/1 var(--f-display);font-style:normal;font-variant-numeric:tabular-nums;white-space:nowrap}
-.cl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.cl-card{display:grid;gap:12px;align-content:start;min-width:0}
-.cl-media{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:16px;overflow:hidden;background:var(--night);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.cl-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
-.cl-card:hover .cl-media{transform:translateY(-6px);box-shadow:0 26px 44px -26px rgba(10,31,68,.6)}
-.cl-card:hover .cl-media img{transform:scale(1.08)}
-.cl-tag{position:absolute;left:10px;top:10px;max-width:calc(100% - 20px);background:rgba(10,31,68,.78);color:#fff;font:600 11.5px/1.2 var(--f-body);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
-.cl-st{display:flex;gap:18px;padding:2px 2px 0}
-.cl-st b{display:block;font:700 clamp(18px,1.9vw,22px)/1.1 var(--f-display);color:var(--accent-ink);font-variant-numeric:tabular-nums}
-.cl-st span{font-size:12.5px;color:var(--muted)}
-.cl-card h3{font-size:20px}
-.cl-card p{font-size:15.5px;color:var(--muted);line-height:1.5}
-.cl-links{display:flex;flex-wrap:wrap;gap:8px}
-.cl-links a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:600 14.5px/1 var(--f-body);text-decoration:none;transition:border-color .2s}
-.cl-links a:hover{border-color:var(--cyan)}
+.pf-tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;margin-bottom:18px;scrollbar-width:none}
+.pf-tabs::-webkit-scrollbar{display:none}
+.pf-tabs button{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:600 15px/1 var(--f-body);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.pf-tabs button i{width:10px;height:10px;border-radius:50%;background:var(--c,var(--cyan))}
+.pf-tabs button[aria-selected="true"]{background:var(--night);color:var(--on-night);border-color:var(--night)}
+.pf-brand{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:18px;animation:pfIn .45s cubic-bezier(.2,.8,.2,1)}
+.pf-brand[hidden]{display:none}
+.pf-av{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font:800 18px/1 var(--f-display);letter-spacing:-.03em}
+.pf-brand h3{font-size:20px}
+.pf-brand p{font-size:15px;color:var(--muted);line-height:1.45;margin-top:4px}
+.pf-brand .meta{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.pf-brand a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;background:var(--cyan);color:var(--night);font:700 14.5px/1 var(--f-body);text-decoration:none;white-space:nowrap}
+.pf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pf-card{display:grid;gap:10px;align-content:start;min-width:0;text-decoration:none;color:inherit;animation:pfIn .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes pfIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.pf-media{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--night);transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease,box-shadow .3s}
+.pf-card:hover .pf-media{box-shadow:0 26px 44px -24px rgba(10,31,68,.65)}
+.pf-media img,.pf-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .7s ease,transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.pf-media img.off{opacity:0}
+.pf-card:hover .pf-media img,.pf-card:hover .pf-media video{transform:scale(1.06)}
+.pf-type{position:absolute;left:10px;top:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(10,31,68,.8);color:#fff;font:600 11.5px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.pf-type svg{width:12px;height:12px}
+.pf-dots{position:absolute;left:0;right:0;bottom:12px;z-index:2;display:flex;justify-content:center;gap:5px}
+.pf-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);transition:background .3s,transform .3s}
+.pf-dots i.on{background:#fff;transform:scale(1.25)}
+.pf-open{position:absolute;inset:auto 10px 10px 10px;z-index:3;display:flex;justify-content:center;align-items:center;gap:8px;min-height:42px;border-radius:999px;background:var(--cyan);color:var(--night);font:700 14.5px/1 var(--f-body);opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.pf-card:hover .pf-open,.pf-card:focus-visible .pf-open{opacity:1;transform:none}
+.pf-card:hover .pf-dots{opacity:0}
+.pf-play{position:absolute;right:10px;top:10px;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:#0A1F44}
+.pf-who{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.pf-who i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.pf-card h3{font-size:18px;line-height:1.2}
+.pf-card p{font-size:15px;color:var(--muted);line-height:1.45}
 .cl-note{margin-top:20px;font-size:14px;color:var(--muted)}
-@media (max-width:980px){.cl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:760px){.fol{grid-template-columns:1fr}}
-@media (max-width:420px){.cl-grid{gap:14px}.cl-st{gap:12px}.cl-links a{padding:0 11px;font-size:13.5px}}
+.pf-lb{position:fixed;inset:0;z-index:70;background:rgba(6,18,42,.86);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));backdrop-filter:blur(6px)}
+.pf-lb[hidden]{display:none}
+.pf-lb-box{position:relative;display:grid;grid-template-columns:auto minmax(0,300px);gap:24px;align-items:center;max-width:100%;color:#fff;animation:pfIn .35s cubic-bezier(.2,.8,.2,1)}
+.pf-lb-v{position:relative}
+.pf-lb-v video{display:block;height:min(78dvh,680px);max-width:100%;aspect-ratio:auto;border-radius:18px;background:#000}
+.pf-lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#0A1F44;font:700 26px/1 var(--f-body);cursor:pointer}
+.pf-lb-nav.p{left:-22px}.pf-lb-nav.n{right:-22px}
+.pf-lb-x{position:absolute;top:-8px;right:-8px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--cyan);color:var(--night);font:700 26px/1 var(--f-body);cursor:pointer}
+.pf-lb-info{display:grid;gap:10px;justify-items:start}
+.pf-lb-info .pf-who{color:var(--cyan)}
+.pf-lb-info h3{font-size:24px;color:#fff}
+.pf-lb-info p{color:var(--on-night-muted);font-size:16px}
+@media (max-width:760px){.pf-lb-box{grid-template-columns:1fr;gap:12px;justify-items:center}.pf-lb-v video{height:min(64dvh,600px)}.pf-lb-info{justify-items:center;text-align:center}.pf-lb-info p{display:none}.pf-lb-nav.p{left:6px}.pf-lb-nav.n{right:6px}.pf-lb-x{top:6px;right:6px}}
 
-/* design gráfico */
-.gd-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.gd-item{margin:0;display:grid;gap:12px;align-content:start;min-width:0}
-.gd-item figcaption{font-size:15.5px;color:var(--muted);line-height:1.45}
-.gd-item figcaption b{display:block;color:var(--ink);font-size:17.5px;margin-bottom:2px}
-.gd-mock{aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;display:grid;place-items:center;background:var(--chip);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.gd-item:hover .gd-mock{transform:translateY(-6px);box-shadow:0 24px 40px -24px rgba(10,31,68,.55)}
-.gd-mock img{width:100%;height:100%;object-fit:cover;display:block}
-.gd-card{background:#E8E2D6;gap:10px;align-content:center}
-.gd-card>div{width:72%;aspect-ratio:85/55;border-radius:6px;box-shadow:0 10px 20px -10px rgba(0,0,0,.45)}
-.gd-card .c1{background:#121212;color:#EDE8DF;padding:10px 12px;display:flex;flex-direction:column;justify-content:flex-end;transform:rotate(-6deg)}
-.gd-card .c1 b{font:400 18px/1 Impact,"Arial Narrow Bold",sans-serif;color:#D9B44A;text-transform:uppercase}
-.gd-card .c1 span{font-size:10px;letter-spacing:.08em}
-.gd-card .c2{background:#D9B44A;display:grid;place-items:center;transform:rotate(4deg) translateX(10%)}
-.gd-card .c2 i{width:26px;height:26px;border-radius:50%;border:3px solid #121212}
-.gd-mat{background:#F3EDE2}
-.gd-mat::before{content:"";position:absolute;inset:12% 10%;border:2px solid #1E3A6E;border-radius:6px}
-.gd-mat .ring{width:42%;aspect-ratio:1;border-radius:50%;border:10px solid rgba(30,58,110,.18)}
-.gd-mat .lines{position:absolute;left:18%;right:18%;bottom:18%;display:grid;gap:6px}
-.gd-mat .lines i{height:5px;border-radius:3px;background:#B4532A;opacity:.55}
-.gd-mat .lines i:nth-child(2){width:70%}.gd-mat .lines i:nth-child(3){width:45%}
-.gd-menu{background:#1E3A6E;color:#F3EDE2;align-content:start;justify-items:stretch;gap:9px;padding:22% 16%}
-.gd-menu b{font:400 26px/1 Georgia,serif;text-align:center;margin-bottom:6px}
-.gd-menu span{height:6px;border-radius:3px;background:rgba(243,237,226,.45)}
-.gd-menu span:nth-child(odd){width:75%}
-.gd-flyer{background:linear-gradient(160deg,#2350C8,#0A1F44);color:#fff;align-content:center;justify-items:start;gap:8px;padding:0 14%}
-.gd-flyer small{font:700 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
-.gd-flyer b{font:800 clamp(20px,2.4vw,28px)/1.05 var(--f-display)}
-.gd-flyer span{background:var(--cyan);color:var(--night);font:600 12px/1 var(--f-body);padding:8px 12px;border-radius:999px}
-.gd-note{margin-top:18px;font-size:14px;color:var(--muted)}
-.gd-cta{margin-top:18px}
-@media (max-width:980px){.gd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:420px){.gd-grid{gap:14px}.gd-item figcaption{font-size:14.5px}}
+@media (hover:none){.pf-open{opacity:1;transform:none;inset:auto 8px 8px auto;min-height:34px;padding:0 12px;font-size:12.5px}.pf-dots{bottom:auto;top:46px}}
+@media (max-width:980px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.fol{grid-template-columns:1fr}}
+@media (max-width:560px){.pf-brand{grid-template-columns:48px minmax(0,1fr)}.pf-av{width:48px;height:48px;font-size:15px}.pf-brand a{grid-column:1/-1;justify-content:center}}
+@media (max-width:420px){.pf-grid{gap:12px}.pf-card h3{font-size:16px}.pf-card p{display:none}}
+@media (prefers-reduced-motion:reduce){.pf-card,.pf-brand{animation:none}.pf-media{transform:none}}
 
 /* journey */
 .journey{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
@@ -477,7 +483,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
       <a href="#servicos">Serviços</a>
       <a href="#planos">Planos</a>
       <a href="#trabalhos">Clientes</a>
-      <a href="#grafico">Design gráfico</a>
       <a href="#processo">Do início ao post</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -532,12 +537,13 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
         </div>
         <div class="vid">
           <iframe class="video-frame" id="videoFrame" src="apresentacao.html?embed" title="Vídeo de apresentação da poh marketing: do olá ao vídeo" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <a class="btn btn-cyan vid-big" href="#apresentacao" id="vidBig"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Ver em grande, com som</a>
         </div>
       </div>
       <div class="kstats" data-noedit>
         <div class="kstat"><b>3 s</b><span>para prender quem faz scroll</span></div>
         <div class="kstat"><b>1 sessão</b><span>dá conteúdo para o mês</span></div>
-        <div class="kstat"><b>8–10</b><span>vídeos por mês</span></div>
+        <div class="kstat"><b>8</b><span>vídeos por mês</span></div>
         <div class="kstat"><b>2×</b><span>por dia a tua área atualiza</span></div>
       </div>
     </div>
@@ -575,10 +581,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
           <div class="split"><div><b>Tu fazes</b>Aprovar</div><div><b>Nós fazemos</b>Tudo o resto</div></div>
         </article>
       </div>
-      <div class="toggle" role="group" aria-label="Escolher modalidade">
-        <button type="button" id="tg-nos" aria-pressed="true">Gravamos nós</button>
-        <button type="button" id="tg-tu" aria-pressed="false">Gravas tu</button>
-      </div>
       <div class="plans" id="plans"></div>
       <p class="note">Setup inicial (uma vez): identidade visual base, templates e otimização dos perfis.</p>
     </div>
@@ -590,82 +592,31 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     <div class="wrap">
       <div class="head">
         <p class="label">Clientes</p>
-        <h2>Marcas com quem já trabalhámos.</h2>
-        <p>Restaurantes, uma barbearia e uma loja de decoração cujas redes acompanhámos, do plano à publicação.</p>
+        <h2>Marcas que acompanhamos.</h2>
+        <p>Da discoteca à relojoaria de luxo. Escolhe uma marca e toca num exemplo para o abrires no Instagram.</p>
       </div>
 
       <div class="fol">
         <div class="fol-main">
           <p class="fol-k">Seguidores somados</p>
-          <div class="fol-num" id="folTotal" aria-label="11.800 seguidores">11.800</div>
-          <p class="fol-cap">seguidores nas contas com que trabalhámos</p>
+          <div class="fol-num" id="folTotal" aria-label="Mais de 56 mil seguidores">56,4<small>mil</small></div>
+          <p class="fol-cap">seguidores nas contas das marcas com que trabalhamos</p>
         </div>
-        <ul class="fol-list">
-          <li><div><b>Allma di Mare</b><span>Restaurante italiano</span></div><em>2.558</em></li>
-          <li><div><b>Dona Barba</b><span>Barbearia</span></div><em>1.035</em></li>
-          <li><div><b>Gosto Muito</b><span>Cozinha tradicional portuguesa</span></div><em>499</em></li>
-          <li><div><b>Pérola de Algodão</b><span>Lembranças e decoração</span></div><em>7.708</em></li>
-        </ul>
+        <ul class="fol-list" id="folList"></ul>
       </div>
 
-      <div class="cl-grid">
-        <article class="cl-card">
-          <div class="cl-media"><img src="clientes/allma-di-mare.jpg" alt="Pizza a ser preparada num reel do Allma di Mare" loading="lazy"><span class="cl-tag">Restaurante italiano</span></div><div class="cl-st"><div><b>2.558</b><span>seguidores</span></div><div><b>140</b><span>publicações</span></div></div>
-          <h3>Allma di Mare</h3>
-          <p>Esposende. Atmosfera, luz quente e comida a sair do forno: feed e reels que dão fome.</p>
-          <div class="cl-links"><a href="https://www.instagram.com/allma.di.mare/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/DA1dzjrxdyu/" target="_blank" rel="noopener">Ver reel ↗</a></div>
-        </article>
-        <article class="cl-card">
-          <div class="cl-media"><img src="clientes/dona-barba.jpg" alt="Barbeiro a terminar um corte num reel da Dona Barba" loading="lazy"><span class="cl-tag">Barbearia</span></div><div class="cl-st"><div><b>1.035</b><span>seguidores</span></div><div><b>41</b><span>publicações</span></div></div>
-          <h3>Dona Barba</h3>
-          <p>Reels verticais com o detalhe do corte, o ambiente e o antes e depois de cada cliente.</p>
-          <div class="cl-links"><a href="https://www.instagram.com/donabarba21/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/DHUIujgNMfn/" target="_blank" rel="noopener">Reel 1 ↗</a><a href="https://www.instagram.com/reel/DBW8swFuLhl/" target="_blank" rel="noopener">Reel 2 ↗</a></div>
-        </article>
-        <article class="cl-card">
-          <div class="cl-media"><img src="clientes/gosto-muito.jpg" alt="Chef na cozinha num reel do Gosto Muito" loading="lazy"><span class="cl-tag">Cozinha tradicional</span></div><div class="cl-st"><div><b>499</b><span>seguidores</span></div><div><b>28</b><span>publicações</span></div></div>
-          <h3>Gosto Muito</h3>
-          <p>Barcelos. Planeamento, fotografia, vídeo e legendas: a sala, a cozinha e as pessoas por trás dos pratos.</p>
-          <div class="cl-links"><a href="https://www.instagram.com/_gosto_muito/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/reel/C_8nkufMpyq/" target="_blank" rel="noopener">Reel 1 ↗</a><a href="https://www.instagram.com/reel/DMn3R92Mzct/" target="_blank" rel="noopener">Reel 2 ↗</a></div>
-        </article>
-        <article class="cl-card">
-          <div class="cl-media"><img src="clientes/perola-de-algodao.jpg" alt="Caixa de produto a ser aberta num reel da Pérola de Algodão" loading="lazy"><span class="cl-tag">Lembranças e decoração</span></div><div class="cl-st"><div><b>7.708</b><span>seguidores</span></div><div><b>471</b><span>publicações</span></div></div>
-          <h3>Pérola de Algodão</h3>
-          <p>Barcelos. Tons da marca, produto em detalhe e conteúdo que explica, inspira e vende.</p>
-          <div class="cl-links"><a href="https://www.instagram.com/peroladealgodao/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.instagram.com/p/DN6XWbCDDuf/" target="_blank" rel="noopener">Ver post ↗</a></div>
-        </article>
+      <div class="pf-tabs" role="tablist" aria-label="Escolher marca" id="pfTabs"></div>
+      <div class="pf-brand" id="pfBrand" hidden aria-live="polite"></div>
+      <div class="pf-grid" id="pfGrid"></div>
+      <p class="cl-note">Os vídeos abrem aqui, com som. Os posts abrem no Instagram de cada marca.</p>
+      <div class="pf-lb" id="pfLb" hidden role="dialog" aria-modal="true" aria-label="Vídeo do trabalho">
+        <div class="pf-lb-box">
+          <button type="button" class="pf-lb-x" id="pfLbX" aria-label="Fechar">×</button>
+          <div class="pf-lb-v"><video id="pfLbV" controls playsinline preload="metadata"></video>
+            <button type="button" class="pf-lb-nav p" id="pfLbP" aria-label="Vídeo anterior">‹</button><button type="button" class="pf-lb-nav n" id="pfLbN" aria-label="Vídeo seguinte">›</button></div>
+          <div class="pf-lb-info" id="pfLbInfo"></div>
+        </div>
       </div>
-      <p class="cl-note">Seguidores e publicações à data das últimas capturas dos perfis.</p>
-    </div>
-  </section>
-
-  <!-- DESIGN GRÁFICO -->
-  <section class="block tint" id="grafico">
-    <div class="wrap">
-      <div class="head">
-        <p class="label">Design gráfico</p>
-        <h2>Também para imprimir.</h2>
-        <p>Cartões de visita, papéis de mesa, menus e flyers com a imagem da tua marca. Fazemos dentro do plano ou por pedido.</p>
-      </div>
-      <div class="gd-grid">
-        <figure class="gd-item">
-          <div class="gd-mock gd-card" aria-hidden="true"><div class="c1"><b>Nome</b><span>Barbearia · Porto</span></div><div class="c2"><i></i></div></div>
-          <figcaption><b>Cartões de visita</b>Frente e verso, prontos para a gráfica.</figcaption>
-        </figure>
-        <figure class="gd-item">
-          <div class="gd-mock gd-mat" aria-hidden="true"><div class="ring"></div><div class="lines"><i></i><i></i><i></i></div></div>
-          <figcaption><b>Papéis de mesa</b>Individuais para restaurantes e cafés.</figcaption>
-        </figure>
-        <figure class="gd-item">
-          <div class="gd-mock gd-menu" aria-hidden="true"><b>Menu</b><span></span><span></span><span></span><span></span><span></span></div>
-          <figcaption><b>Menus e cartas</b>Fáceis de ler e de atualizar.</figcaption>
-        </figure>
-        <figure class="gd-item">
-          <div class="gd-mock gd-flyer" aria-hidden="true"><small>Sábado</small><b>Noite de fados</b><span>Reserva já</span></div>
-          <figcaption><b>Flyers e cartazes</b>Para eventos, promoções e montra.</figcaption>
-        </figure>
-      </div>
-      <p class="gd-note">Exemplos ilustrativos. Os trabalhos reais chegam em breve.</p>
-      <div class="gd-cta"><a class="btn btn-cyan" href="https://wa.me/351919313540?text=Ol%C3%A1!%20Queria%20um%20or%C3%A7amento%20para%20trabalhos%20gr%C3%A1ficos." target="_blank" rel="noopener">Pedir orçamento</a></div>
     </div>
   </section>
 
@@ -1093,13 +1044,93 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   }
 
   /* ---------- Seguidores somados (clientes) ---------- */
-  const folEl=document.getElementById('folTotal');
-  if(folEl&&!reduce&&'IntersectionObserver' in window){
-    const fmtN=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
-    const fo=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;fo.unobserve(folEl);const to=11800,t0=performance.now(),D=1600;
-      const tick=now=>{const p=Math.min(1,(now-t0)/D);folEl.textContent=fmtN(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)})},{threshold:.5});
-    fo.observe(folEl);
-  }
+  /* Para acrescentar trabalhos: junta uma linha a PF_WORKS (b = marca, t = reel/carrossel/post, img = capa em clientes/, u = link do Instagram). */
+  const PF_BRANDS=[
+    {k:'lust',n:'Lust Porto',c:'Discoteca · Porto',f:23100,fl:'23,1 mil',u:'lustporto',col:'#C2362B',ab:'LP',d:'Cartazes e vídeos para as noites de sexta, sábado e véspera de feriado.'},
+    {k:'celar',n:'CELAR Portugal',c:'Cozinha · desde 1978',f:13800,fl:'13,8 mil',u:'celarportugal',col:'#E3262E',ab:'CE',d:'Campanhas e promoções da loja online, com o produto em destaque.'},
+    {k:'ar',n:'AR Watches',c:'Relojoaria de luxo · Lisboa',f:10000,fl:'10 mil',u:'arwatchespt',col:'#0F3B2A',ab:'AR',d:'Relógios de luxo em foto e vídeo, com fundo limpo e luz controlada.'},
+    {k:'perola',n:'Pérola de Algodão',c:'Lembranças e decoração · Barcelos',f:8519,fl:'8.519',u:'peroladealgodao',col:'#A8846B',ab:'PA',d:'Lembranças para batizados e casamentos: fotografia, reels e carrosséis.'},
+    {k:'dona',n:'Dona Barba',c:'Barbearia',f:1056,fl:'1.056',u:'donabarba21',col:'#2A2A2A',ab:'DB',d:'Reels com o detalhe do corte, o ambiente e o antes e depois.'}
+  ];
+  const PF_WORKS=[
+    {b:'lust',t:'reel',h:'Porto Horror Halloween',s:'Teaser da festa de 31 de outubro.',img:['clientes/lust-halloween.jpg'],v:'clientes/lust-halloween-p.mp4',f:'clientes/lust-halloween.mp4',u:'https://www.instagram.com/lustporto/reels/'},
+    {b:'celar',t:'reel',h:'Uma amiga na cozinha',s:'A loja online, das promoções à entrega.',img:['clientes/celar-reel.jpg'],v:'clientes/celar-reel-p.mp4',f:'clientes/celar-reel.mp4',u:'https://www.instagram.com/reel/Ddza1V5kSm7/'},
+    {b:'ar',t:'reel',h:'Rolex Datejust, da caixa ao pulso',s:'Unboxing com a história da peça.',img:['clientes/ar-reel-1.jpg'],v:'clientes/ar-reel-1-p.mp4',f:'clientes/ar-reel-1.mp4',u:'https://www.instagram.com/reel/DZ-sYJygAiz/'},
+    {b:'dona',t:'reel',h:'Um dia na Dona Barba',s:'Do caminho até ao styling final.',img:['clientes/dona-reel-1.jpg'],v:'clientes/dona-reel-1-p.mp4',f:'clientes/dona-reel-1.mp4',u:'https://www.instagram.com/reel/DBMpk32xhcG/'},
+    {b:'perola',t:'reel',h:'Detalhes que falam por si',s:'Caixa “Amo-te” em vídeo curto.',img:['clientes/perola-amo-te.jpg'],v:'clientes/perola-amo-te-p.mp4',f:'clientes/perola-amo-te.mp4',u:'https://www.instagram.com/reel/DUjP4sBjLyM/'},
+    {b:'lust',t:'reel',h:'Porto Mega Experience',s:'Vídeo do cartaz: duas pistas, duas festas.',img:['clientes/lust-mega-experience.jpg'],u:'https://www.instagram.com/p/DfPQ-pdMkQT/'},
+    {b:'celar',t:'carrossel',h:'Moka Soft a 50%',s:'Campanha exclusiva da loja online.',img:['clientes/celar-moka-soft.jpg'],u:'https://www.instagram.com/p/DeLuA4DD-PR/'},
+    {b:'ar',t:'reel',h:'Rolex Oyster · Sold',s:'Caixa, papéis e garantia em vídeo.',img:['clientes/ar-reel-2.jpg'],v:'clientes/ar-reel-2-p.mp4',f:'clientes/ar-reel-2.mp4',u:'https://www.instagram.com/reel/DRFg0TZDYOd/'},
+    {b:'perola',t:'reel',h:'O novo site da Pérola',s:'Reel de lançamento da loja online.',img:['clientes/perola-site.jpg'],v:'clientes/perola-site-p.mp4',f:'clientes/perola-site.mp4',u:'https://www.instagram.com/reel/DRxobVxjLk5/'},
+    {b:'dona',t:'reel',h:'O ambiente da barbearia',s:'O espaço, as pessoas e o corte.',img:['clientes/dona-reel-2.jpg'],v:'clientes/dona-reel-2-p.mp4',f:'clientes/dona-reel-2.mp4',u:'https://www.instagram.com/reel/DHUIujgNMfn/'},
+    {b:'ar',t:'carrossel',h:'Rolex Submariner “Starbucks”',s:'Vídeo e fotos de produto em estúdio.',img:['clientes/ar-submariner.jpg'],u:'https://www.instagram.com/p/DTVvXbSjFPY/'},
+    {b:'lust',t:'reel',h:'Elevate: Adrianna e Sheila',s:'Noite de techno com convidadas.',img:['clientes/lust-elevate.jpg'],u:'https://www.instagram.com/p/Dey9elho6md/'},
+    {b:'perola',t:'carrossel',h:'Prendas para os padrinhos',s:'Carrossel com 8 ideias de prendas.',img:['clientes/perola-padrinhos-5.jpg','clientes/perola-padrinhos-2.jpg'],u:'https://www.instagram.com/p/DeH96g-ERof/'},
+    {b:'ar',t:'carrossel',h:'Rolex GMT-Master II · Sold',s:'Peça vendida, anunciada em carrossel.',img:['clientes/ar-gmt.jpg'],u:'https://www.instagram.com/p/DSVxtx-jMuc/'}
+  ];
+  (()=>{
+    const B=Object.fromEntries(PF_BRANDS.map(b=>[b.k,b]));
+    const tabs=document.getElementById('pfTabs'),grid=document.getElementById('pfGrid'),bx=document.getElementById('pfBrand'),fl=document.getElementById('folList');
+    if(!tabs||!grid)return;
+    const ICO={reel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>',carrossel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="6" width="13" height="15" rx="3"/><path d="M8 3h10a3 3 0 0 1 3 3v10"/></svg>',post:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>'};
+    const TL={reel:'Reel',carrossel:'Carrossel',post:'Post'};
+    const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    let cur='todas';
+    fl.innerHTML=PF_BRANDS.map(b=>`<li><button type="button" data-b="${b.k}" aria-pressed="false"><div><b>${esc(b.n)}</b><span>${esc(b.c)}</span></div><em>${b.fl}</em></button></li>`).join('');
+    tabs.innerHTML=`<button type="button" role="tab" data-b="todas" aria-selected="true">Todas</button>`+PF_BRANDS.map(b=>`<button type="button" role="tab" data-b="${b.k}" aria-selected="false" style="--c:${b.col}"><i></i>${esc(b.n)}</button>`).join('');
+    let vio=null,timers=[];
+    function render(k){
+      cur=k;timers.forEach(clearInterval);timers=[];
+      [...tabs.children].forEach(t=>t.setAttribute('aria-selected',t.dataset.b===k));
+      [...fl.querySelectorAll('button')].forEach(t=>t.setAttribute('aria-pressed',t.dataset.b===k));
+      const b=B[k];
+      if(b){bx.hidden=false;bx.style.setProperty('--c',b.col);bx.innerHTML=`<span class="pf-av" aria-hidden="true">${b.ab}</span><div><p class="meta">${esc(b.c)} · ${b.fl} seguidores</p><h3>${esc(b.n)}</h3><p>${esc(b.d)}</p></div><a href="https://www.instagram.com/${b.u}/" target="_blank" rel="noopener">Ver perfil @${esc(b.u)} ↗</a>`;bx.style.animation='none';void bx.offsetWidth;bx.style.animation=''}
+      else bx.hidden=true;
+      const list=PF_WORKS.filter(w=>k==='todas'||w.b===k);
+      grid.innerHTML=list.map((w,i)=>{const br=B[w.b];return `<a class="pf-card" href="${esc(w.u)}" target="_blank" rel="noopener" data-w="${PF_WORKS.indexOf(w)}" style="--d:${(i*.05).toFixed(2)}s;--c:${br.col}" aria-label="${esc(w.h)} · ${esc(br.n)} · ${w.f?'ver vídeo':'abrir no Instagram'}">
+        <div class="pf-media">${w.img.map((s,j)=>`<img src="${esc(s)}" alt="" loading="lazy"${j?' class="off"':''}>`).join('')}${w.v?`<video muted loop playsinline preload="none" poster="${esc(w.img[0])}" data-src="${esc(w.v)}"></video>`:''}
+          <span class="pf-type">${ICO[w.t]||''}${TL[w.t]||''}</span>${w.t==='reel'?'<span class="pf-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg></span>':''}
+          ${w.img.length>1?`<span class="pf-dots">${w.img.map((_,j)=>`<i${j?'':' class="on"'}></i>`).join('')}</span>`:''}
+          <span class="pf-open">${w.f?'▶ Ver vídeo':'Abrir no Instagram ↗'}</span></div>
+        <span class="pf-who"><i></i>${esc(br.n)}</span><h3>${esc(w.h)}</h3><p>${esc(w.s)}</p></a>`}).join('');
+      // carrosséis: trocar imagens
+      if(!reduce)grid.querySelectorAll('.pf-media').forEach(m=>{const ims=[...m.querySelectorAll('img')];if(ims.length<2)return;const ds=[...m.querySelectorAll('.pf-dots i')];let n=0;
+        timers.push(setInterval(()=>{ims[n].classList.add('off');ds[n]&&ds[n].classList.remove('on');n=(n+1)%ims.length;ims[n].classList.remove('off');ds[n]&&ds[n].classList.add('on')},2600))});
+      // reels: vídeo em loop quando visível
+      if(vio)vio.disconnect();
+      const vids=[...grid.querySelectorAll('video')];
+      if(vids.length&&!reduce&&'IntersectionObserver' in window){vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;const p=v.play();if(p&&p.catch)p.catch(()=>{})}else v.pause()}),{threshold:.4});vids.forEach(v=>vio.observe(v))}
+      // inclinação com o rato
+      if(matchMedia('(hover:hover)').matches&&!reduce)grid.querySelectorAll('.pf-card').forEach(c=>{const m=c.querySelector('.pf-media');
+        c.addEventListener('pointermove',e=>{const r=m.getBoundingClientRect();m.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*8+'deg');m.style.setProperty('--rx',(.5-(e.clientY-r.top)/r.height)*8+'deg')});
+        c.addEventListener('pointerleave',()=>{m.style.setProperty('--ry','0deg');m.style.setProperty('--rx','0deg')})});
+    }
+    tabs.addEventListener('click',e=>{const t=e.target.closest('button');if(t)render(t.dataset.b)});
+    fl.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;render(cur===t.dataset.b?'todas':t.dataset.b);tabs.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})});
+    render('todas');
+    // vídeo em grande, com som
+    const lb=document.getElementById('pfLb'),lv=document.getElementById('pfLbV'),li=document.getElementById('pfLbInfo');let lbList=[],lbI=0,lbLast=null;
+    function lbShow(n){lbI=(n+lbList.length)%lbList.length;const w=lbList[lbI],br=B[w.b];lv.poster=w.img[0];lv.src=w.f;const pr=lv.play();if(pr&&pr.catch)pr.catch(()=>{});
+      li.innerHTML=`<span class="pf-who" style="--c:${br.col}"><i></i>${esc(br.n)} · ${br.fl} seguidores</span><h3>${esc(w.h)}</h3><p>${esc(w.s)}</p><a class="btn btn-cyan" href="${esc(w.u)}" target="_blank" rel="noopener">Abrir no Instagram ↗</a>`}
+    function lbOpen(w){lbList=PF_WORKS.filter(x=>x.f&&(cur==='todas'||x.b===cur));lbLast=document.activeElement;lb.hidden=false;document.body.style.overflow='hidden';lbShow(lbList.indexOf(w));document.getElementById('pfLbX').focus()}
+    function lbClose(){if(lb.hidden)return;lv.pause();lv.removeAttribute('src');lv.load();lb.hidden=true;document.body.style.overflow='';if(lbLast)lbLast.focus()}
+    grid.addEventListener('click',e=>{const c=e.target.closest('.pf-card');if(!c)return;const w=PF_WORKS[+c.dataset.w];if(w&&w.f){e.preventDefault();lbOpen(w)}});
+    document.getElementById('pfLbX').addEventListener('click',lbClose);
+    document.getElementById('pfLbP').addEventListener('click',()=>lbShow(lbI-1));
+    document.getElementById('pfLbN').addEventListener('click',()=>lbShow(lbI+1));
+    lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
+    addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')lbClose();else if(e.key==='ArrowRight')lbShow(lbI+1);else if(e.key==='ArrowLeft')lbShow(lbI-1)});
+    // total animado
+    const folEl=document.getElementById('folTotal');
+    const tot=PF_BRANDS.reduce((a,b)=>a+b.f,0);
+    const show=n=>folEl.innerHTML=(n/1000).toFixed(1).replace('.',',')+'<small>mil</small>';
+    show(tot);folEl.setAttribute('aria-label','Mais de '+Math.floor(tot/1000)+' mil seguidores');
+    if(!reduce&&'IntersectionObserver' in window){
+      const fo=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;fo.unobserve(folEl);const t0=performance.now(),D=1600;
+        const tick=now=>{const p=Math.min(1,(now-t0)/D);show(tot*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)}),{threshold:.5});
+      fo.observe(folEl);
+    }
+  })();
 
   /* ---------- Serviços ---------- */
   const SVC=[
@@ -1117,10 +1148,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
      l:['Produtos e serviços','Espaço e ambiente','Equipa, com nome e história'],f:['Todos os negócios']},
     {k:'design',t:'Design',s:'Templates e tom',ic:'<path d="M12 3a9 9 0 1 0 9 9c0-1.7-1.3-2-2.5-2H16a2 2 0 0 1 0-4h.5"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/>',
      d:'Uma imagem coerente em todo o lado.',
-     l:['Templates para posts e stories','Tabelas de preços e catálogos','Cartões de fidelização'],f:['Setup inicial']},
-    {k:'grafico',t:'Trabalhos gráficos',s:'Cartões, papéis de mesa e mais',ic:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h6M7 14h4"/>',
-     d:'Design para imprimir, com a imagem da tua marca. Também por pedido, fora dos planos.',
-     l:['Cartões de visita','Papéis de mesa e individuais','Menus e cartas','Flyers, cartazes e autocolantes'],f:['Restauração','Comércio','Todos os negócios']}
+     l:['Templates para posts e stories','Tabelas de preços e catálogos','Cartões de fidelização'],f:['Setup inicial']}
   ];
   const svcList=document.getElementById('svcList'),svcPanel=document.getElementById('svcPanel');
   svcList.innerHTML=SVC.map((s,k)=>`<button class="svc-btn" role="tab" type="button" id="svc-${s.k}" aria-controls="svcPanel" aria-selected="${k===0}"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">${s.ic}</svg></span><span><b>${POH.tx(s.t,'svc-t')}</b><small>${POH.tx(s.s,'svc-s')}</small></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>`).join('');
@@ -1138,26 +1166,18 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   /* ---------- Planos ---------- */
   const PLANS={
     nos:[
-      {name:'Básico',price:'220 €',per:'/mês',items:['8 vídeos','6 fotos','1 sessão de gravação no teu espaço']},
-      {name:'Standard',price:'270 €',per:'/mês',pop:true,items:['8 vídeos','8 fotos','1 sessão de gravação no teu espaço','Stories']},
-      {name:'Premium',price:'370 €',per:'/mês',items:['2 sessões de gravação no teu espaço','Tudo o que inclui o Premium do Gravas tu:','10 vídeos e 10 fotos','20 ideias de conteúdo','Calendário, relatório e stories','Reservas e mensagens do estabelecimento']}
+      {name:'Gravamos nós',price:'350 €',per:'/mês',pop:true,items:['8 reels','Stories todos os dias','1 sessão de gravação por mês no teu espaço','Planeamento de conteúdo','Calendário de publicações','Relatório mensal']}
     ],
     tu:[
-      {name:'Básico',price:'120 €',per:'/mês',items:['12 ideias de conteúdo','8 guias de gravação','8 edições de vídeo','6 edições de fotos','Calendário','Relatório']},
-      {name:'Standard',price:'170 €',per:'/mês',pop:true,items:['16 ideias de conteúdo','8 guiões de vídeo','8 guias de gravação','8 edições de vídeo','8 edições de fotos','Calendário, relatório e stories']},
-      {name:'Premium',price:'240 €',per:'/mês',items:['20 ideias de conteúdo','10 guias de gravação','10 edições de vídeo','10 edições de fotos','Calendário, relatório e stories','Reservas e mensagens do estabelecimento']}
+      {name:'Gravas tu',price:'200 €',per:'/mês',items:['8 vídeos','8 guias de gravação','Plano de conteúdo','Calendário de publicações','Stories todos os dias','Relatório mensal']}
     ]
   };
   window.POH.PLANS=PLANS;
   const plansEl=document.getElementById('plans');
-  function renderPlans(key){
-    plansEl.innerHTML=PLANS[key].map((p,pi)=>`<article class="plan${p.pop?' pop':''}">${p.pop?`<span class="tag">${POH.tx('Mais escolhido','plan-pop')}</span>`:''}<h3>${POH.tx(p.name,'plan-'+key+pi+'-n')}</h3><div class="price">${POH.tx(p.price,'plan-'+key+pi+'-p')} <small>${POH.tx(p.per,'plan-'+key+pi+'-per')}</small></div><ul>${p.items.map((i,ii)=>`<li>${POH.tx(i,'plan-'+key+pi+'-i'+ii)}</li>`).join('')}</ul><a class="btn ${p.pop?'btn-cyan':'btn-ghost'}" href="#contacto">${POH.tx('Quero este plano','plan-cta')}</a></article>`).join('');
-    document.getElementById('tg-nos').setAttribute('aria-pressed',key==='nos');
-    document.getElementById('tg-tu').setAttribute('aria-pressed',key==='tu');
+  function renderPlans(){
+    plansEl.innerHTML=['nos','tu'].map(key=>{const p=PLANS[key][0],pi=0;return `<article class="plan${p.pop?' pop':''}">${p.pop?`<span class="tag">${POH.tx('Tratamos de tudo','plan-pop')}</span>`:`<span class="tag tag-soft">${POH.tx('Tu gravas, nós guiamos','plan-soft')}</span>`}<h3>${POH.tx(p.name,'plan-'+key+pi+'-n')}</h3><div class="price">${POH.tx(p.price,'plan-'+key+pi+'-p')} <small>${POH.tx(p.per,'plan-'+key+pi+'-per')}</small></div><ul>${p.items.map((i,ii)=>`<li>${POH.tx(i,'plan-'+key+pi+'-i'+ii)}</li>`).join('')}</ul><a class="btn ${p.pop?'btn-cyan':'btn-ghost'}" href="#contacto">${POH.tx('Quero este plano','plan-cta')}</a></article>`}).join('');
   }
-  document.getElementById('tg-nos').addEventListener('click',()=>renderPlans('nos'));
-  document.getElementById('tg-tu').addEventListener('click',()=>renderPlans('tu'));
-  renderPlans('nos');
+  renderPlans();
 
   /* ---------- Exemplos: filtro ---------- */
   const chips=[...document.querySelectorAll('.chips button')],pieces=[...document.querySelectorAll('#folio .piece')];
@@ -1233,7 +1253,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   const navLinks=[...document.querySelectorAll('.nav a')];
   if('IntersectionObserver' in window){
     const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
-    ['sobre','servicos','planos','exemplos','trabalhos','grafico','processo','contacto'].forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s)});
+    ['sobre','servicos','planos','exemplos','trabalhos','processo','contacto'].forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s)});
   }
 
   /* ---------- Apresentação ---------- */
@@ -1246,6 +1266,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   addEventListener('hashchange',route);route();
   document.getElementById('closeDeck').addEventListener('click',()=>{if(location.hash==='#apresentacao')location.hash='topo';else closeDeck()});
   deck.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('closeDeck').click()});
+  document.getElementById('vidBig').addEventListener('click',()=>{try{localStorage.setItem('pp-sound','1')}catch(e){}});
   deckFrame.addEventListener('load',()=>{try{deckFrame.contentWindow.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('closeDeck').click()})}catch(e){}});
   document.getElementById('fsBtn').addEventListener('click',()=>{
     try{const p=document.fullscreenElement?document.exitFullscreen():deck.requestFullscreen();if(p&&p.catch)p.catch(()=>{})}catch(e){}
@@ -1261,7 +1282,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
   /* revelar ao fazer scroll */
   if(reduce||!('IntersectionObserver' in window))return;
   document.documentElement.classList.add('js-anim');
-  const groups=[['.head',0],['.value',.12],['.counters',0],['.svc',0],['.way',.15],['.plans',0],['.piece',.08],['.fol',0],['.cl-card',.1],['.gd-item',.1],['.area-grid,.app,.app-frame',0],['.contact .wrap>*',.1]];
+  const groups=[['.head',0],['.value',.12],['.counters',0],['.svc',0],['.way',.15],['.plans',0],['.piece',.08],['.fol',0],['.pf-tabs',0],['.area-grid,.app,.app-frame',0],['.contact .wrap>*',.1]];
   groups.forEach(([sel,step])=>{document.querySelectorAll(sel).forEach((el,i)=>{if(el.closest('#deck'))return;el.setAttribute('data-rv','');el.style.setProperty('--rvd',(step*(i%4)).toFixed(2)+'s')})});
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting)e.target.classList.add('rv-in');
@@ -1640,7 +1661,7 @@ details.gs dd{margin:0 0 4px;font-size:14.5px;white-space:pre-wrap}
 
   function planItems(){
     const P=POH.PLANS;if(!P||!D.mod||!D.pac)return null;
-    const k=D.mod==='Gravas tu'?'tu':'nos';const p=(P[k]||[]).find(x=>x.name===D.pac);return p||null;
+    const k=D.mod==='Gravas tu'?'tu':'nos';const p=(P[k]||[]).find(x=>x.name===D.pac)||(P[k]||[])[0];return p||null;
   }
   function pbar(lbl,a){const [done,meta]=a;const pct=meta?Math.min(100,Math.round(done/meta*100)):0;const falta=Math.max(meta-done,0);
     return `<div class="pbar"><div class="p-top"><span>${lbl}</span><b>${meta?pct+'%':'—'}</b></div><div class="p-trk"><div class="p-fil" data-w="${pct}"></div></div><small>${meta?`${done} de ${meta} · ${falta?'faltam '+falta:'concluído ✓'}`:'Meta do mês ainda por definir'}</small></div>`}

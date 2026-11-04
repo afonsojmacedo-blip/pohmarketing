@@ -1,3 +1,6 @@
 Publicar site.command
 .git/stale-*
 .DS_Store
+WhatsApp Video*
+*.mov
+Claude outputs/

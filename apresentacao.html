@@ -1201,8 +1201,10 @@ html.embed .sndpill{display:inline-flex}
   document.getElementById('prev').addEventListener('click',()=>go(t>1.2?idx:idx-1,playing||!started));
   document.getElementById('next').addEventListener('click',()=>go(idx+1,playing||!started));
   document.getElementById('fs').addEventListener('click',()=>{
+    const big=()=>{try{localStorage.setItem('pp-sound','1')}catch(e){}try{window.parent.location.hash='#apresentacao'}catch(e){}};
+    if(EMBED&&window.parent!==window&&(!stage.requestFullscreen||matchMedia('(display-mode: standalone)').matches||navigator.standalone)){big();return}
     try{if(document.fullscreenElement)document.exitFullscreen();
-    else{const r=stage.requestFullscreen&&stage.requestFullscreen();if(r&&r.catch)r.catch(()=>{});}}catch(e){}
+    else{const r=stage.requestFullscreen&&stage.requestFullscreen();if(r&&r.catch)r.catch(()=>{if(EMBED&&window.parent!==window)big()});}}catch(e){if(EMBED&&window.parent!==window)big()}
   });
   document.addEventListener('keydown',e=>{
     if(e.key===' '){if(e.target.closest&&e.target.closest('button'))return;e.preventDefault();toggle();}

@@ -306,7 +306,11 @@ section.tint{background:var(--tint)}
 .pf-lb[hidden]{display:none}
 .pf-lb-box{position:relative;display:grid;grid-template-columns:auto minmax(0,300px);gap:24px;align-items:center;max-width:100%;color:#fff;animation:pfIn .35s cubic-bezier(.2,.8,.2,1)}
 .pf-lb-v{position:relative}
-.pf-lb-v video{display:block;height:min(78dvh,680px);max-width:100%;aspect-ratio:auto;border-radius:18px;background:#000}
+.pf-lb-v video,.pf-lb-v img{display:block;height:min(78dvh,680px);max-width:100%;border-radius:18px;background:#000}
+.pf-lb-v img{height:auto;max-height:min(78dvh,760px);width:min(560px,100%);object-fit:contain;background:#fff}
+.pf-lb-v [hidden]{display:none}
+.pf-card[data-t="perfil"] .pf-media img{object-position:50% 0;transition:object-position 4s ease,transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.pf-card[data-t="perfil"]:hover .pf-media img{object-position:50% 100%;transform:none}
 .pf-lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#0A1F44;font:700 26px/1 var(--f-body);cursor:pointer}
 .pf-lb-nav.p{left:-22px}.pf-lb-nav.n{right:-22px}
 .pf-lb-x{position:absolute;top:-8px;right:-8px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--cyan);color:var(--night);font:700 26px/1 var(--f-body);cursor:pointer}
@@ -612,7 +616,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
       <div class="pf-lb" id="pfLb" hidden role="dialog" aria-modal="true" aria-label="Vídeo do trabalho">
         <div class="pf-lb-box">
           <button type="button" class="pf-lb-x" id="pfLbX" aria-label="Fechar">×</button>
-          <div class="pf-lb-v"><video id="pfLbV" controls playsinline preload="metadata"></video>
+          <div class="pf-lb-v"><video id="pfLbV" controls playsinline preload="metadata"></video><img id="pfLbI" alt="" hidden>
             <button type="button" class="pf-lb-nav p" id="pfLbP" aria-label="Vídeo anterior">‹</button><button type="button" class="pf-lb-nav n" id="pfLbN" aria-label="Vídeo seguinte">›</button></div>
           <div class="pf-lb-info" id="pfLbInfo"></div>
         </div>
@@ -1058,6 +1062,7 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
     {b:'ar',t:'reel',h:'Rolex Datejust, da caixa ao pulso',s:'Unboxing com a história da peça.',img:['clientes/ar-reel-1.jpg'],v:'clientes/ar-reel-1-p.mp4',f:'clientes/ar-reel-1.mp4',u:'https://www.instagram.com/reel/DZ-sYJygAiz/'},
     {b:'dona',t:'reel',h:'Um dia na Dona Barba',s:'Do caminho até ao styling final.',img:['clientes/dona-reel-1.jpg'],v:'clientes/dona-reel-1-p.mp4',f:'clientes/dona-reel-1.mp4',u:'https://www.instagram.com/reel/DBMpk32xhcG/'},
     {b:'perola',t:'reel',h:'Detalhes que falam por si',s:'Caixa “Amo-te” em vídeo curto.',img:['clientes/perola-amo-te.jpg'],v:'clientes/perola-amo-te-p.mp4',f:'clientes/perola-amo-te.mp4',u:'https://www.instagram.com/reel/DUjP4sBjLyM/'},
+    {b:'perola',t:'perfil',h:'A estética do perfil',s:'Um feed pensado como um todo: tons suaves, letra e ritmo.',img:['clientes/perola-perfil.jpg'],g:'clientes/perola-perfil.jpg',u:'https://www.instagram.com/peroladealgodao/'},
     {b:'lust',t:'reel',h:'Porto Mega Experience',s:'Vídeo do cartaz: duas pistas, duas festas.',img:['clientes/lust-mega-experience.jpg'],u:'https://www.instagram.com/p/DfPQ-pdMkQT/'},
     {b:'celar',t:'carrossel',h:'Moka Soft a 50%',s:'Campanha exclusiva da loja online.',img:['clientes/celar-moka-soft.jpg'],u:'https://www.instagram.com/p/DeLuA4DD-PR/'},
     {b:'ar',t:'reel',h:'Rolex Oyster · Sold',s:'Caixa, papéis e garantia em vídeo.',img:['clientes/ar-reel-2.jpg'],v:'clientes/ar-reel-2-p.mp4',f:'clientes/ar-reel-2.mp4',u:'https://www.instagram.com/reel/DRFg0TZDYOd/'},
@@ -1072,8 +1077,8 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
     const B=Object.fromEntries(PF_BRANDS.map(b=>[b.k,b]));
     const tabs=document.getElementById('pfTabs'),grid=document.getElementById('pfGrid'),bx=document.getElementById('pfBrand'),fl=document.getElementById('folList');
     if(!tabs||!grid)return;
-    const ICO={reel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>',carrossel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="6" width="13" height="15" rx="3"/><path d="M8 3h10a3 3 0 0 1 3 3v10"/></svg>',post:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>'};
-    const TL={reel:'Reel',carrossel:'Carrossel',post:'Post'};
+    const ICO={reel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>',carrossel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="6" width="13" height="15" rx="3"/><path d="M8 3h10a3 3 0 0 1 3 3v10"/></svg>',perfil:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',post:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>'};
+    const TL={reel:'Reel',carrossel:'Carrossel',post:'Post',perfil:'Perfil'};
     const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     let cur='todas';
     fl.innerHTML=PF_BRANDS.map(b=>`<li><button type="button" data-b="${b.k}" aria-pressed="false"><div><b>${esc(b.n)}</b><span>${esc(b.c)}</span></div><em>${b.fl}</em></button></li>`).join('');
@@ -1087,11 +1092,11 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
       if(b){bx.hidden=false;bx.style.setProperty('--c',b.col);bx.innerHTML=`<span class="pf-av" aria-hidden="true">${b.ab}</span><div><p class="meta">${esc(b.c)} · ${b.fl} seguidores</p><h3>${esc(b.n)}</h3><p>${esc(b.d)}</p></div><a href="https://www.instagram.com/${b.u}/" target="_blank" rel="noopener">Ver perfil @${esc(b.u)} ↗</a>`;bx.style.animation='none';void bx.offsetWidth;bx.style.animation=''}
       else bx.hidden=true;
       const list=PF_WORKS.filter(w=>k==='todas'||w.b===k);
-      grid.innerHTML=list.map((w,i)=>{const br=B[w.b];return `<a class="pf-card" href="${esc(w.u)}" target="_blank" rel="noopener" data-w="${PF_WORKS.indexOf(w)}" style="--d:${(i*.05).toFixed(2)}s;--c:${br.col}" aria-label="${esc(w.h)} · ${esc(br.n)} · ${w.f?'ver vídeo':'abrir no Instagram'}">
+      grid.innerHTML=list.map((w,i)=>{const br=B[w.b];return `<a class="pf-card" href="${esc(w.u)}" target="_blank" rel="noopener" data-w="${PF_WORKS.indexOf(w)}" data-t="${w.t}" style="--d:${(i*.05).toFixed(2)}s;--c:${br.col}" aria-label="${esc(w.h)} · ${esc(br.n)} · ${w.f?'ver vídeo':w.g?'ver o feed':'abrir no Instagram'}">
         <div class="pf-media">${w.img.map((s,j)=>`<img src="${esc(s)}" alt="" loading="lazy"${j?' class="off"':''}>`).join('')}${w.v?`<video muted loop playsinline preload="none" poster="${esc(w.img[0])}" data-src="${esc(w.v)}"></video>`:''}
           <span class="pf-type">${ICO[w.t]||''}${TL[w.t]||''}</span>${w.t==='reel'?'<span class="pf-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg></span>':''}
           ${w.img.length>1?`<span class="pf-dots">${w.img.map((_,j)=>`<i${j?'':' class="on"'}></i>`).join('')}</span>`:''}
-          <span class="pf-open">${w.f?'▶ Ver vídeo':'Abrir no Instagram ↗'}</span></div>
+          <span class="pf-open">${w.f?'▶ Ver vídeo':w.g?'Ver o feed':'Abrir no Instagram ↗'}</span></div>
         <span class="pf-who"><i></i>${esc(br.n)}</span><h3>${esc(w.h)}</h3><p>${esc(w.s)}</p></a>`}).join('');
       // carrosséis: trocar imagens
       if(!reduce)grid.querySelectorAll('.pf-media').forEach(m=>{const ims=[...m.querySelectorAll('img')];if(ims.length<2)return;const ds=[...m.querySelectorAll('.pf-dots i')];let n=0;
@@ -1110,11 +1115,13 @@ body.editing [data-k].ed-changed{outline-color:#FFB020}
     render('todas');
     // vídeo em grande, com som
     const lb=document.getElementById('pfLb'),lv=document.getElementById('pfLbV'),li=document.getElementById('pfLbInfo');let lbList=[],lbI=0,lbLast=null;
-    function lbShow(n){lbI=(n+lbList.length)%lbList.length;const w=lbList[lbI],br=B[w.b];lv.poster=w.img[0];lv.src=w.f;const pr=lv.play();if(pr&&pr.catch)pr.catch(()=>{});
-      li.innerHTML=`<span class="pf-who" style="--c:${br.col}"><i></i>${esc(br.n)} · ${br.fl} seguidores</span><h3>${esc(w.h)}</h3><p>${esc(w.s)}</p><a class="btn btn-cyan" href="${esc(w.u)}" target="_blank" rel="noopener">Abrir no Instagram ↗</a>`}
-    function lbOpen(w){lbList=PF_WORKS.filter(x=>x.f&&(cur==='todas'||x.b===cur));lbLast=document.activeElement;lb.hidden=false;document.body.style.overflow='hidden';lbShow(lbList.indexOf(w));document.getElementById('pfLbX').focus()}
+    function lbShow(n){lbI=(n+lbList.length)%lbList.length;const w=lbList[lbI],br=B[w.b];const im=document.getElementById('pfLbI');
+      if(w.f){im.hidden=true;lv.hidden=false;lv.poster=w.img[0];lv.src=w.f;const pr=lv.play();if(pr&&pr.catch)pr.catch(()=>{})}
+      else{lv.pause();lv.removeAttribute('src');lv.hidden=true;im.hidden=false;im.src=w.g;im.alt='Feed de '+br.n}
+      li.innerHTML=`<span class="pf-who" style="--c:${br.col}"><i></i>${esc(br.n)} · ${br.fl} seguidores</span><h3>${esc(w.h)}</h3><p>${esc(w.s)}</p><a class="btn btn-cyan" href="${esc(w.u)}" target="_blank" rel="noopener">${w.g?'Ver perfil @'+esc(br.u)+' ↗':'Abrir no Instagram ↗'}</a>`}
+    function lbOpen(w){lbList=PF_WORKS.filter(x=>(x.f||x.g)&&(cur==='todas'||x.b===cur));lbLast=document.activeElement;lb.hidden=false;document.body.style.overflow='hidden';lbShow(lbList.indexOf(w));document.getElementById('pfLbX').focus()}
     function lbClose(){if(lb.hidden)return;lv.pause();lv.removeAttribute('src');lv.load();lb.hidden=true;document.body.style.overflow='';if(lbLast)lbLast.focus()}
-    grid.addEventListener('click',e=>{const c=e.target.closest('.pf-card');if(!c)return;const w=PF_WORKS[+c.dataset.w];if(w&&w.f){e.preventDefault();lbOpen(w)}});
+    grid.addEventListener('click',e=>{const c=e.target.closest('.pf-card');if(!c)return;const w=PF_WORKS[+c.dataset.w];if(w&&(w.f||w.g)){e.preventDefault();lbOpen(w)}});
     document.getElementById('pfLbX').addEventListener('click',lbClose);
     document.getElementById('pfLbP').addEventListener('click',()=>lbShow(lbI-1));
     document.getElementById('pfLbN').addEventListener('click',()=>lbShow(lbI+1));

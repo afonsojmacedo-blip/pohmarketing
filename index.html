@@ -1619,11 +1619,11 @@ details.gs dd{margin:0 0 4px;font-size:14.5px;white-space:pre-wrap}
   async function sha(s){const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
   async function tryLogin(code,silent){
     const n=norm(code),msg=$('ptMsg');
-    if(n.length>=8&&n.length<=14&&window.crypto&&crypto.subtle){try{const O={s:'sHA2YqHf9BMVvSlCylfSzA==',i:'pGImaVSYiGdcxi7d',d:'m63zBMSCxoZP3xkcT0S8/VcAHb6UT5B8zFfqebk4/u9r8R0tRSgfpnXAdx4z256V0D7VO2EhhdiCIluDD9vDGiY='};
+    if(n.length>=8&&n.length<=14&&window.crypto&&crypto.subtle){try{const O={s:'gS00tK4D3136aRRrdgf1sQ==',i:'Kh/LgTgZO/T1PqaQ',d:'U414Gr0No9rtiTaZFWKLkRxYv95r2dSbhQ=='};
       const ob=await crypto.subtle.importKey('raw',new TextEncoder().encode(n),'PBKDF2',false,['deriveKey']);
       const ok=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(O.s),iterations:150000,hash:'SHA-256'},ob,{name:'AES-GCM',length:256},false,['decrypt']);
       const u=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(O.i)},ok,b64(O.d)));
-      if(/^https:\/\/claude\.ai\//.test(u)){$('ptCode').value='';msg.className='pt-msg';msg.textContent='A abrir a Área do Dono…';location.href=u;return}}catch(e){}}
+      if(u==='dono.html'){$('ptCode').value='';try{sessionStorage.setItem('poh-dono',n)}catch(e){}msg.className='pt-msg';msg.textContent='A abrir a Área do Dono…';location.href='dono.html';return}}catch(e){}}
     if(n.length<12){if(!silent){msg.textContent='O código tem 16 letras e números.';$('ptCode').classList.add('shake');setTimeout(()=>$('ptCode').classList.remove('shake'),500)}return}
     msg.className='pt-msg';msg.textContent='A abrir a tua área…';$('ptGo').disabled=true;
     try{

@@ -794,7 +794,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     </div>
   </section>
 </main>
-<footer><div class="wrap"><span class="logo"><span class="poh" style="font-size:18px">poh</span><span class="mk">marketing · Porto</span></span><span>919 313 540 · @afonsojmacedo</span><a href="#apresentacao" style="color:inherit">Abrir apresentação</a><a href="https://claude.ai/artifact/69uB55fmgE56uNxc4VQAs5" target="_blank" rel="noopener" style="color:inherit" data-noedit>Área do dono</a></div></footer>
+<footer><div class="wrap"><span class="logo"><span class="poh" style="font-size:18px">poh</span><span class="mk">marketing · Porto</span></span><span>919 313 540 · @afonsojmacedo</span><a href="#apresentacao" style="color:inherit">Abrir apresentação</a></div></footer>
 
 <!-- ====== Pitch deck (#apresentacao) ====== -->
 <div class="deck" id="deck" hidden role="dialog" aria-modal="true" aria-label="Apresentação poh marketing">
@@ -1467,7 +1467,6 @@ html.no-split .sl{opacity:1;transform:none;filter:none}
           <button class="btn btn-cyan" type="submit" id="ptGo">Entrar</button>
           <p class="pt-msg" id="ptMsg" role="status"></p>
         </form>
-        <p class="muted p-small"><a href="https://claude.ai/artifact/69uB55fmgE56uNxc4VQAs5" target="_blank" rel="noopener">Sou o dono da poh → Área do dono</a></p>
         <p class="muted p-small">Não tens código? Fala connosco: <a href="https://wa.me/351919313540" target="_blank" rel="noopener">919 313 540</a>.</p>
         <hr>
         <p class="muted p-small">Ainda não és cliente? <button type="button" class="linkbtn" id="ptLead">Conta-nos sobre o teu negócio</button></p>
@@ -1620,6 +1619,11 @@ details.gs dd{margin:0 0 4px;font-size:14.5px;white-space:pre-wrap}
   async function sha(s){const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
   async function tryLogin(code,silent){
     const n=norm(code),msg=$('ptMsg');
+    if(n.length>=8&&n.length<=14&&window.crypto&&crypto.subtle){try{const O={s:'sHA2YqHf9BMVvSlCylfSzA==',i:'pGImaVSYiGdcxi7d',d:'m63zBMSCxoZP3xkcT0S8/VcAHb6UT5B8zFfqebk4/u9r8R0tRSgfpnXAdx4z256V0D7VO2EhhdiCIluDD9vDGiY='};
+      const ob=await crypto.subtle.importKey('raw',new TextEncoder().encode(n),'PBKDF2',false,['deriveKey']);
+      const ok=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(O.s),iterations:150000,hash:'SHA-256'},ob,{name:'AES-GCM',length:256},false,['decrypt']);
+      const u=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(O.i)},ok,b64(O.d)));
+      if(/^https:\/\/claude\.ai\//.test(u)){$('ptCode').value='';msg.className='pt-msg';msg.textContent='A abrir a Área do Dono…';location.href=u;return}}catch(e){}}
     if(n.length<12){if(!silent){msg.textContent='O código tem 16 letras e números.';$('ptCode').classList.add('shake');setTimeout(()=>$('ptCode').classList.remove('shake'),500)}return}
     msg.className='pt-msg';msg.textContent='A abrir a tua área…';$('ptGo').disabled=true;
     try{

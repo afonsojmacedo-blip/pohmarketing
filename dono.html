@@ -180,6 +180,70 @@ button,select,input,textarea{font:inherit;color:inherit}
 .brand .dot,.lockbox .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CC9F0;margin-left:2px;vertical-align:top}
 .savest{border:0;background:none;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;padding:6px 4px;min-height:40px}
 .savest[data-k="ok"]{color:var(--ok)}.savest[data-k="err"],.savest[data-k="badtoken"],.savest[data-k="notoken"]{color:var(--bad);text-decoration:underline}
+/* Simulador Instagram */
+.ig{position:fixed;inset:0;z-index:80;background:rgba(6,9,18,.92);display:flex;align-items:center;justify-content:center;gap:28px;padding:20px}
+.ig[hidden]{display:none}
+.phone{position:relative;background:#000;border-radius:44px;border:10px solid #1b1b1f;box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 0 2px #333;overflow:hidden;flex:0 0 auto}
+.screen{position:absolute;inset:0;background:#fff;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;overflow:hidden}
+.igside{color:#fff;max-width:300px;display:flex;flex-direction:column;gap:14px}
+.igside h2{color:#fff;font-size:28px}
+.igside p{color:#C9D3EA;margin:0;font-size:15px}
+.igside .btn{background:#ffffff14;color:#fff;border-color:#ffffff33}
+.igclose{position:absolute;top:14px;right:14px;z-index:90;background:#ffffff1f;color:#fff;border:1px solid #ffffff33;border-radius:999px;min-height:44px;min-width:44px;font-size:20px;cursor:pointer}
+@media (max-width:640px){.ig{padding:0;background:#000}.phone{border:0;border-radius:0;box-shadow:none}.igside{display:none}.igclose{top:calc(8px + env(safe-area-inset-top,0px));right:8px;background:rgba(0,0,0,.45)}}
+.view{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.view[hidden]{display:none}
+.igtop{position:sticky;top:0;z-index:3;background:#fff;display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) 14px 10px;font-weight:700;font-size:17px;border-bottom:1px solid #efefef}
+.igtop button{border:0;background:none;font-size:22px;cursor:pointer;min-width:32px;min-height:32px;color:#111}
+.igh{display:flex;align-items:center;gap:20px;padding:14px 16px 8px}
+.ring{width:86px;height:86px;border-radius:50%;padding:3px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);border:0;cursor:pointer;flex:0 0 auto}
+.ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;display:block;background:#fff}
+.igstats{display:flex;gap:18px;text-align:center;font-size:13px}
+.igstats b{display:block;font-size:17px}
+.igbio{padding:0 16px 10px;font-size:14px;line-height:1.35}
+.igbio b{display:block}
+.igbio span{color:#555}
+.igbtns{display:flex;gap:6px;padding:0 16px 12px}
+.igbtns span{flex:1;background:#efefef;border-radius:8px;text-align:center;font-weight:600;font-size:13px;padding:7px 0}
+.hl{display:flex;gap:14px;padding:4px 16px 14px;overflow-x:auto}
+.hl button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;cursor:pointer;color:#111;flex:0 0 auto}
+.hl i{width:62px;height:62px;border-radius:50%;border:1px solid #dbdbdb;padding:3px;display:block;overflow:hidden;position:relative;background:#fff}
+.hl i>div{position:absolute;inset:3px;border-radius:50%;overflow:hidden}
+.igtabs{display:flex;border-top:1px solid #efefef}
+.igtabs span{flex:1;text-align:center;padding:9px 0;border-bottom:1.5px solid #111;font-size:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.cell{position:relative;aspect-ratio:4/5;overflow:hidden;background:#eee;border:0;padding:0;cursor:pointer}
+.cell>.tplbox,.mini>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.cell img,.mini img{width:100%;height:100%;object-fit:cover;display:block}
+.fpost{border-bottom:1px solid #efefef;padding-bottom:10px}
+.fhead{display:flex;align-items:center;gap:10px;padding:10px 12px;font-weight:600;font-size:14px}
+.fhead img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.fimg{position:relative;overflow:hidden;background:#eee}
+.fimg>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0}
+.fact{display:flex;gap:14px;padding:10px 12px 4px}
+.fact svg{width:24px;height:24px}
+.fact .sp{flex:1}
+.fcap{padding:0 12px;font-size:14px;line-height:1.35}
+.liked{animation:likepop .5s ease}
+@keyframes likepop{50%{transform:scale(1.3)}}
+.sto{position:absolute;inset:0;background:#000;z-index:5;touch-action:none}
+.sto[hidden]{display:none}
+.sbars{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));left:10px;right:10px;display:flex;gap:3px;z-index:7}
+.sbars i{flex:1;height:2.5px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.sbars i b{display:block;height:100%;width:0;background:#fff}
+.stage2{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage2>.sw{position:relative;overflow:hidden}
+.stage2>.sw>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0}
+.stap{position:absolute;top:0;bottom:60px;width:35%;z-index:6;background:none;border:0;cursor:pointer}
+.stap.l{left:0}.stap.r{right:0;width:65%}
+.sx{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));right:8px;z-index:8;background:none;border:0;color:#fff;font-size:26px;cursor:pointer;min-width:40px;min-height:40px}
+.sfoot{position:absolute;left:10px;right:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:7;display:flex;gap:10px;align-items:center}
+.sfoot span{flex:1;border:1px solid rgba(255,255,255,.6);border-radius:999px;color:#fff;font-size:14px;padding:10px 14px}
+.sfoot svg{width:26px;height:26px}
+.sname{display:none}
+.stage2 [style*="top:12px;left:12px;right:12px;display:flex;gap:4px"]{display:none!important}
+.ig.storying .igclose{display:none}
+@media (max-width:640px){.igtop .igicons{display:none}}
 /* Dialogs */
 dialog{border:0;border-radius:16px;padding:0;background:var(--surface);color:var(--fg);width:min(760px,calc(100vw - 32px));max-height:calc(100vh - 32px)}
 dialog::backdrop{background:rgba(8,12,24,.6)}
@@ -361,6 +425,22 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   </form>
 </dialog>
 
+<div class="ig" id="ig" hidden role="dialog" aria-modal="true" aria-label="Simulação do Instagram">
+  <button class="igclose" type="button" id="igClose" aria-label="Fechar simulação">✕</button>
+  <div class="igside"><p class="kick" style="color:#4CC9F0;font-size:12px;font-weight:800;letter-spacing:.2em;margin:0">SIMULAÇÃO</p><h2 id="igTitle">Assim pode ficar o vosso Instagram.</h2><p>Toca na foto de perfil ou nos destaques para ver os stories. Toca num post para ver o feed.</p><button class="btn" type="button" id="igPlay">▶ Ver stories</button></div>
+  <div class="phone" id="phone"><div class="screen" id="screen">
+    <div class="view" id="vProfile"></div>
+    <div class="view" id="vFeed" hidden></div>
+    <div class="sto" id="sto" hidden>
+      <div class="sbars" id="sbars"></div>
+      <div class="stage2" id="stage2"></div>
+      <button class="stap l" type="button" id="sPrev" aria-label="Story anterior"></button><button class="stap r" type="button" id="sNext" aria-label="Story seguinte"></button>
+      <button class="sx" type="button" id="sX" aria-label="Fechar stories">✕</button>
+      <div class="sname" id="sName"></div>
+      <div class="sfoot"><span>Enviar mensagem</span><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></div>
+    </div>
+  </div></div>
+</div>
 <dialog id="setup" aria-labelledby="setup-title">
   <form class="dlg" id="setupForm">
     <h2 id="setup-title">Ligar a tua chave GitHub (só uma vez)</h2>
@@ -474,7 +554,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
       <div class="right"><span class="pill" style="background:var(--s-${est})">${esc(estadoNome(est))}</span>${r.prioridade?`<span class="prio">Prioridade ${esc(r.prioridade)}</span>`:''}</div></summary>
       <div class="body">
         <div class="tools">
-          <button type="button" class="btn primary" data-act="apresentar">Apresentar ao cliente</button>
+          <button type="button" class="btn primary" data-act="ig">📱 Ver como Instagram</button><button type="button" class="btn" data-act="apresentar">Apresentar ao cliente</button>
           ${nMod?`<button type="button" class="btn" data-act="estudio">Editar conteúdos (${nMod})</button>`:''}
           ${canEdit?`<label for="st-${esc(id)}">Estado</label><select id="st-${esc(id)}" data-act="estado">${ESTADOS.map(e=>`<option value="${e.id}"${e.id===est?' selected':''}>${esc(e.nome)}</option>`).join('')}</select><button type="button" class="btn" data-act="editar">Editar ficha</button>`:''}
         </div>
@@ -506,6 +586,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     if(a.dataset.act==='editar')openEdit(rows.find(r=>r._id===id));
     if(a.dataset.act==='exemplo'){exTarget=id;$('#ex-file').value='';$('#ex-file').click()}
     if(a.dataset.act==='apresentar')openDeck(id);
+    if(a.dataset.act==='ig')openIG(id);
     if(a.dataset.act==='estudio'){sCli=id;store.set('poh-scli',id);setTab('estudio')}
   });
   function showImg(src,cap){$('#v-img').src=src;$('#v-img').alt=cap;$('#v-cap').textContent=cap;$('#viewer').showModal()}
@@ -553,7 +634,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     S.push(`<div class="slide"><p class="kick">O que vimos</p><h2>Onde estão hoje.</h2>${r.resumo?`<p>${esc(r.resumo)}</p>`:''}${stats?`<div class="stats">${stats}</div>`:''}</div>`);
     if((r.melhorar||[]).length)S.push(`<div class="slide"><p class="kick">Oportunidades</p><h2>O que pode render mais.</h2><ul>${r.melhorar.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`);
     if((r.fazer||[]).length)S.push(`<div class="slide"><p class="kick">O plano</p><h2>O que vamos fazer.</h2><ul>${r.fazer.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`);
-    if(base.length)S.push(`<div class="slide"><p class="kick">Como pode ficar</p><h2>A vossa marca, nas vossas cores.</h2>${gal(base)}</div>`);
+    if(base.length||modelos.some(m=>m.cliente===id))S.push(`<div class="slide"><p class="kick">Como pode ficar</p><h2>A vossa marca, nas vossas cores.</h2><div><button type="button" class="btn primary" style="min-height:52px;font-size:17px" data-igopen="${esc(id)}">📱 Ver o vosso Instagram</button></div>${gal(base)}</div>`);
     if(natal.length)S.push(`<div class="slide"><p class="kick">Campanha de Natal</p><h2>Mais reservas este Natal.</h2>${gal(natal)}</div>`);
     const plan=k=>{const p=PLANOS[k];return `<div class="plan${r.plano===k?' rec':''}">${r.plano===k?'<p class="kick" style="margin:0">Recomendado</p>':''}<h3>${p.nome}</h3><div class="pr">${p.valor} €<small> /mês</small></div><ul>${p.itens.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`};
     S.push(`<div class="slide"><p class="kick">Planos</p><h2>Escolhe como queres trabalhar.</h2><div class="plans">${plan('nos')}${plan('tu')}</div></div>`);
@@ -566,7 +647,8 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   $('#dPrev').addEventListener('click',()=>goSlide(slideIdx-1));
   $('#dNext').addEventListener('click',()=>slideIdx===slideN-1?closeDeck():goSlide(slideIdx+1));
   $('#dClose').addEventListener('click',closeDeck);
-  document.addEventListener('keydown',e=>{if($('#deck').hidden)return;if(e.key==='ArrowRight')goSlide(slideIdx+1);if(e.key==='ArrowLeft')goSlide(slideIdx-1);if(e.key==='Escape')closeDeck()});
+  $('#slides').addEventListener('click',e=>{const b=e.target.closest('[data-igopen]');if(b)openIG(b.dataset.igopen)});
+  document.addEventListener('keydown',e=>{if(!$('#ig').hidden)return;if($('#deck').hidden)return;if(e.key==='ArrowRight')goSlide(slideIdx+1);if(e.key==='ArrowLeft')goSlide(slideIdx-1);if(e.key==='Escape')closeDeck()});
   let tx=null;$('#slides').addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});$('#slides').addEventListener('touchend',e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)goSlide(slideIdx+(dx<0?1:-1));tx=null});
 
   /* ---------- Estúdio ---------- */
@@ -697,6 +779,84 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   $('#fExtra').addEventListener('submit',async e=>{e.preventDefault();const F=fdoc();await saveF({extras:(F.extras||[]).concat([{id:Date.now().toString(36),desc:$('#eDesc').value.trim(),valor:num($('#eVal').value),pago:false}])});$('#eDesc').value='';$('#eVal').value=''});
   $('#fDesp').addEventListener('submit',async e=>{e.preventDefault();const F=fdoc();await saveF({despesas:(F.despesas||[]).concat([{id:Date.now().toString(36),desc:$('#dDesc').value.trim(),valor:num($('#dVal').value)}])});$('#dDesc').value='';$('#dVal').value=''});
 
+
+  /* ---------- Simulador Instagram ---------- */
+  const IGI={heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>',com:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>',send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>',save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'};
+  let IG=null;
+  const capOf=t=>String(t||'').replace(/^(Story|Post)\s*\d+\s*·\s*/i,'').replace(/\s*\([^)]*\)\s*/g,' ').trim();
+  function igUser(r){const ig=(r.redes||[]).find(x=>/instagram/i.test(x.rede)&&safeUrl(x.url));if(ig){const m=ig.url.match(/instagram\.com\/([A-Za-z0-9._]+)/);if(m)return m[1]}return slug(r.nome).replace(/-/g,'')}
+  function miniNode(m,W,H,play){const box=tplNode(m);const s=Math.max(W/m.w,H/m.h);box.style.transformOrigin='0 0';box.style.position='absolute';box.style.transform=`scale(${s})`;box.style.left=((W-m.w*s)/2)+'px';box.style.top=((H-m.h*s)/2)+'px';if(!play)requestAnimationFrame(()=>freeze(box,false));return box}
+  function sizePhone(){const ph=$('#phone');if(innerWidth<=640){ph.style.width=innerWidth+'px';ph.style.height=innerHeight+'px';return}const h=Math.min(860,innerHeight-40);ph.style.height=h+'px';ph.style.width=Math.round(h*0.47)+'px'}
+  function openIG(id){
+    const r=rows.find(x=>x._id===id);if(!r)return;
+    const mine=modelos.filter(m=>m.cliente===id).sort((a,b)=>a.ordem-b.ordem);
+    const natal=m=>(m.grupo||'').startsWith('Natal');
+    const posts=mine.filter(m=>m.tipo==='Post').sort((a,b)=>(natal(b)-natal(a))||(a.ordem-b.ordem));
+    const storiesBase=mine.filter(m=>m.tipo==='Story'&&!natal(m)),storiesNatal=mine.filter(m=>m.tipo==='Story'&&natal(m));
+    const exPosts=!posts.length?(r.exemplos||[]).filter(e=>e.tipo!=='Story'):[];
+    IG={r,user:igUser(r),posts,exPosts,groups:[storiesNatal.length?{nome:'Natal',items:storiesNatal}:null,storiesBase.length?{nome:'Destaques',items:storiesBase}:null].filter(Boolean)};
+    $('#igTitle').textContent='Assim pode ficar o Instagram do '+r.nome+'.';
+    $('#ig').hidden=false;document.body.style.overflow='hidden';sizePhone();renderProfile();$('#igClose').focus();
+  }
+  function renderProfile(){
+    const {r,user,posts,exPosts,groups}=IG;const v=$('#vProfile');const W=$('#screen').clientWidth;const cw=(W-4)/3,chh=cw*5/4;
+    const n=posts.length||exPosts.length;
+    v.innerHTML=`<div class="igtop"><span style="flex:1">${esc(user)} ⌄</span><span class="igicons" aria-hidden="true">＋ ☰</span></div>
+      <div class="igh"><button class="ring" type="button" id="igRing" aria-label="Ver stories de ${esc(r.nome)}">${r.logo?`<img src="${esc(r.logo)}" alt="">`:''}</button>
+      <div class="igstats"><div><b>${n}</b>publicações</div><div><b>${groups.reduce((s,g)=>s+g.items.length,0)}</b>stories</div><div><b>${groups.length}</b>destaques</div></div></div>
+      <div class="igbio"><b>${esc(r.nome)}</b><span>${esc([r.tipo,r.zona].filter(Boolean).join(' · '))}</span>${r.horario?`<div>🕒 ${esc(r.horario)}</div>`:''}${r.telefone?`<div>📞 ${esc(r.telefone)}</div>`:''}${r.morada?`<div>📍 ${esc(r.morada)}</div>`:''}</div>
+      <div class="igbtns"><span>Seguir</span><span>Mensagem</span><span>Ligar</span></div>
+      <div class="hl" id="igHl">${groups.map((g,i)=>`<button type="button" data-g="${i}"><i><div></div></i>${esc(g.nome)}</button>`).join('')}</div>
+      <div class="igtabs" aria-hidden="true"><span>▦</span></div>
+      <div class="grid3" id="igGrid"></div>`;
+    v.querySelectorAll('#igHl [data-g]').forEach(b=>{const g=groups[b.dataset.g];const d=b.querySelector('i>div');d.appendChild(miniNode(g.items[0],56,56,false));d.firstChild.style.position='absolute'});
+    const grid=v.querySelector('#igGrid');
+    posts.forEach((m,i)=>{const c=document.createElement('button');c.type='button';c.className='cell';c.dataset.i=i;c.setAttribute('aria-label','Ver post: '+capOf(m.titulo));c.style.height=chh+'px';c.appendChild(miniNode(m,cw,chh,false));grid.appendChild(c)});
+    exPosts.forEach((e,i)=>{const c=document.createElement('button');c.type='button';c.className='cell';c.dataset.x=i;c.innerHTML=`<img src="${esc(e.img)}" alt="${esc(e.titulo)}">`;grid.appendChild(c)});
+    v.scrollTop=0;$('#vProfile').hidden=false;$('#vFeed').hidden=true;
+  }
+  function renderFeed(start){
+    const {r,user,posts}=IG;const v=$('#vFeed');const W=$('#screen').clientWidth;
+    v.innerHTML=`<div class="igtop"><button type="button" id="igBack" aria-label="Voltar ao perfil">‹</button><span>Publicações</span></div>`;
+    posts.forEach((m,i)=>{const H=W*m.h/m.w;const el=document.createElement('article');el.className='fpost';el.id='fp'+i;
+      el.innerHTML=`<div class="fhead">${r.logo?`<img src="${esc(r.logo)}" alt="">`:''}<span>${esc(user)}</span></div><div class="fimg" style="height:${H}px"></div><div class="fact"><button type="button" class="lk" aria-label="Gosto" style="border:0;background:none;padding:0;cursor:pointer;color:#111">${IGI.heart}</button>${IGI.com}${IGI.send}<span class="sp"></span>${IGI.save}</div><div class="fcap"><b>${esc(user)}</b> ${esc(capOf(m.titulo))}</div>`;
+      el.querySelector('.fimg').appendChild(miniNode(m,W,H,false));v.appendChild(el)});
+    $('#vProfile').hidden=true;v.hidden=false;requestAnimationFrame(()=>{const t=document.getElementById('fp'+start);v.scrollTop=t?t.offsetTop-50:0});
+  }
+  $('#screen').addEventListener('click',e=>{
+    if(e.target.closest('#igRing')){playStories([].concat(...IG.groups.slice().reverse().map(g=>g.items)));return}
+    const g=e.target.closest('#igHl [data-g]');if(g){playStories(IG.groups[g.dataset.g].items);return}
+    const c=e.target.closest('.cell[data-i]');if(c){renderFeed(Number(c.dataset.i));return}
+    const x=e.target.closest('.cell[data-x]');if(x){const ex=IG.exPosts[x.dataset.x];showImg(ex.img,ex.titulo);return}
+    if(e.target.closest('#igBack')){$('#vFeed').hidden=true;$('#vProfile').hidden=false;return}
+    const lk=e.target.closest('.lk');if(lk){lk.style.color=lk.style.color==='rgb(237, 73, 86)'?'#111':'#ed4956';lk.querySelector('svg').setAttribute('fill',lk.style.color==='rgb(237, 73, 86)'?'#ed4956':'none');lk.classList.remove('liked');void lk.offsetWidth;lk.classList.add('liked')}
+  });
+  $('#vFeed').addEventListener('dblclick',e=>{const f=e.target.closest('.fpost');if(f)f.querySelector('.lk').click()});
+  /* stories */
+  let SQ=[],SI=0,STimer=null,SStart=0,SPaused=0,SDur=7000;
+  function playStories(list){if(!list.length)return;SQ=list;SI=0;$('#sto').hidden=false;$('#ig').classList.add('storying');$('#sbars').innerHTML=SQ.map(()=>'<i><b></b></i>').join('');showStory()}
+  function showStory(){
+    cancelAnimationFrame(STimer);const st=$('#stage2');st.innerHTML='';const m=SQ[SI];
+    const W=$('#screen').clientWidth,H=$('#screen').clientHeight;const s=Math.min(W/m.w,H/m.h);
+    const sw=document.createElement('div');sw.className='sw';sw.style.width=m.w*s+'px';sw.style.height=m.h*s+'px';const box=tplNode(m);box.style.transform=`scale(${s})`;sw.appendChild(box);st.appendChild(sw);
+    requestAnimationFrame(()=>{const top=sw.offsetTop;$('#sbars').style.top=(top+10*s)+'px';$('#sbars').style.left=(sw.offsetLeft+10*s)+'px';$('#sbars').style.right=(sw.offsetLeft+10*s)+'px';$('#sX').style.top=(top+22*s)+'px'});
+    [...$('#sbars').children].forEach((b,i)=>b.firstChild.style.width=i<SI?'100%':'0');
+    SStart=performance.now();SPaused=0;tick();
+  }
+  function tick(){STimer=requestAnimationFrame(()=>{if(SPaused){tick();return}const p=Math.min(1,(performance.now()-SStart)/SDur);const b=$('#sbars').children[SI];if(b)b.firstChild.style.width=(p*100)+'%';if(p>=1)nextStory();else tick()})}
+  function nextStory(){if(SI<SQ.length-1){SI++;showStory()}else closeStories()}
+  function prevStory(){if(SI>0){SI--;showStory()}else showStory()}
+  function closeStories(){cancelAnimationFrame(STimer);$('#ig').classList.remove('storying');$('#sto').hidden=true;$('#stage2').innerHTML=''}
+  $('#sNext').addEventListener('click',nextStory);$('#sPrev').addEventListener('click',prevStory);$('#sX').addEventListener('click',closeStories);
+  let holdT=0,ty0=null;
+  $('#sto').addEventListener('pointerdown',e=>{holdT=performance.now();ty0=e.clientY;SPaused=performance.now()});
+  $('#sto').addEventListener('pointerup',e=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}if(ty0!=null&&e.clientY-ty0>90)closeStories();ty0=null});
+  $('#sto').addEventListener('pointercancel',()=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}});
+  function closeIG(){closeStories();$('#ig').hidden=true;$('#vProfile').innerHTML='';$('#vFeed').innerHTML='';if($('#deck').hidden)document.body.style.overflow=''}
+  $('#igClose').addEventListener('click',closeIG);
+  $('#igPlay').addEventListener('click',()=>playStories([].concat(...IG.groups.slice().reverse().map(g=>g.items))));
+  document.addEventListener('keydown',e=>{if($('#ig').hidden)return;if(e.key==='Escape'){if(!$('#sto').hidden)closeStories();else closeIG()}if(!$('#sto').hidden){if(e.key==='ArrowRight')nextStory();if(e.key==='ArrowLeft')prevStory()}});
+  window.addEventListener('resize',()=>{if(!$('#ig').hidden){sizePhone();if(!$('#sto').hidden)showStory();else if(!$('#vProfile').hidden)renderProfile()}});
   /* ---------- Dados (cifrados no GitHub) ---------- */
   const REPO='afonsojmacedo-blip/pohmarketing',RAW='https://raw.githubusercontent.com/'+REPO+'/main/',API='https://api.github.com/repos/'+REPO+'/contents/';
   const te=new TextEncoder(),td=new TextDecoder();

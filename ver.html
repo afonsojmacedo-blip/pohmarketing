@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0A1022">
+<title>Proposta · poh marketing</title>
+<meta property="og:title" content="Proposta poh marketing">
+<meta property="og:description" content="Veja como pode ficar o vosso Instagram.">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;--body:"Figtree","Segoe UI",system-ui,sans-serif;--bg:#0A1022;--fg:#EEF2FB;--muted:#9FB0D3;--accent:#4CC9F0}
+@font-face{font-family:Anton;src:url(dono/fonts/Anton-Regular.ttf) format("truetype")}
+@font-face{font-family:"Archivo Black";src:url(dono/fonts/ArchivoBlack-Regular.ttf) format("truetype")}
+@font-face{font-family:"Barlow Condensed";font-weight:700;src:url(dono/fonts/BarlowCondensed-Bold.ttf) format("truetype")}
+@font-face{font-family:"Barlow Condensed";font-weight:800;src:url(dono/fonts/BarlowCondensed-ExtraBold.ttf) format("truetype")}
+@font-face{font-family:"Bebas Neue";src:url(dono/fonts/BebasNeue-Regular.ttf) format("truetype")}
+@font-face{font-family:"DM Serif Display";src:url(dono/fonts/DMSerifDisplay-Regular.ttf) format("truetype")}
+@font-face{font-family:Inter;font-weight:100 900;src:url(dono/fonts/Inter-var.ttf) format("truetype")}
+@font-face{font-family:Oswald;font-weight:200 700;src:url(dono/fonts/Oswald-var.ttf) format("truetype")}
+@font-face{font-family:Rye;src:url(dono/fonts/Rye-Regular.ttf) format("truetype")}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+button{font:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 16px;border-radius:12px;border:1px solid #ffffff33;background:#ffffff14;color:#fff;font-weight:700;cursor:pointer;text-decoration:none}
+.btn:focus-visible,.gal button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tplbox{line-height:normal;font-size:16px;color:#000;font-family:Inter,system-ui,sans-serif;text-align:left}
+.tplbox,.tplbox *{box-sizing:content-box}
+.tplbox>div{border-radius:0!important}
+.wrap{max-width:1080px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-left,0px)) calc(48px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:28px}
+.poh{font-family:var(--display);font-weight:800;font-size:22px}
+.poh i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-left:2px;vertical-align:top}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:20px 0 6px}
+.hero img{width:112px;height:112px;border-radius:26px;object-fit:cover;background:#fff}
+.hero .kick{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--accent);margin:0}
+.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.04;color:#fff}
+.hero p{margin:0;color:#C9D3EA;max-width:52ch}
+.ctas{display:flex;flex-direction:column;gap:10px;width:min(380px,100%)}
+.ctas .b1{background:#fff;color:#0A1022;border:0;min-height:56px;font-size:17px}
+.ctas .wa{background:#25D366;color:#06301A;border:0;min-height:52px}
+.sec h2{font-size:24px;color:#fff;margin-bottom:12px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.gal button{border:0;padding:0;background:#ffffff0d;border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;text-align:left;color:#fff}
+.gal .fr{position:relative;width:100%;overflow:hidden;background:#000}
+.gal .fr>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.gal span{font-size:13px;padding:8px 10px;color:#C9D3EA;line-height:1.3}
+.foot{text-align:center;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.lb{position:fixed;inset:0;z-index:90;background:#000;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.lb .st{position:relative;overflow:hidden}
+.lb .st>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);background:#ffffff22;border:0;color:#fff;font-size:28px;width:48px;height:64px;border-radius:12px;cursor:pointer}
+.lb .pv{left:10px}.lb .nx{right:10px}
+.lb .x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;background:#ffffff22;border:0;color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer}
+.lb .cap{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#fff;font-size:14px}
+.state{padding:60px 16px;text-align:center;color:#C9D3EA}
+/* Simulador Instagram */
+.ig{position:fixed;inset:0;z-index:80;background:#0A1022;display:flex;align-items:center;justify-content:center;gap:28px;padding:20px}
+.ig[hidden]{display:none}
+.phone{position:relative;background:#000;border-radius:44px;border:10px solid #1b1b1f;box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 0 2px #333;overflow:hidden;flex:0 0 auto}
+.screen{position:absolute;inset:0;background:#fff;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;overflow:hidden}
+.igside{color:#fff;max-width:300px;display:flex;flex-direction:column;gap:14px}
+.igside h2{color:#fff;font-size:28px}
+.igside p{color:#C9D3EA;margin:0;font-size:15px}
+
+.igclose{position:absolute;top:14px;right:14px;z-index:90;background:#ffffff1f;color:#fff;border:1px solid #ffffff33;border-radius:999px;min-height:44px;min-width:44px;font-size:20px;cursor:pointer}
+@media (max-width:640px){.ig{padding:0;background:#000}.phone{border:0;border-radius:0;box-shadow:none}.igside{display:none}.igclose{top:calc(8px + env(safe-area-inset-top,0px));right:8px;background:rgba(0,0,0,.45)}}
+.view{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.view[hidden]{display:none}
+.igtop{position:sticky;top:0;z-index:3;background:#fff;display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) 14px 10px;font-weight:700;font-size:17px;border-bottom:1px solid #efefef}
+.igtop button{border:0;background:none;font-size:22px;cursor:pointer;min-width:32px;min-height:32px;color:#111}
+.igh{display:flex;align-items:center;gap:20px;padding:14px 16px 8px}
+.ring{width:86px;height:86px;border-radius:50%;padding:3px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75);border:0;cursor:pointer;flex:0 0 auto}
+.ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #fff;display:block;background:#fff}
+.igstats{display:flex;gap:18px;text-align:center;font-size:13px}
+.igstats b{display:block;font-size:17px}
+.igbio{padding:0 16px 10px;font-size:14px;line-height:1.35}
+.igbio b{display:block}
+.igbio span{color:#555}
+.igbtns{display:flex;gap:6px;padding:0 16px 12px}
+.igbtns span{flex:1;background:#efefef;border-radius:8px;text-align:center;font-weight:600;font-size:13px;padding:7px 0}
+.hl{display:flex;gap:14px;padding:4px 16px 14px;overflow-x:auto}
+.hl button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;cursor:pointer;color:#111;flex:0 0 auto}
+.hl i{width:62px;height:62px;border-radius:50%;border:1px solid #dbdbdb;padding:3px;display:block;overflow:hidden;position:relative;background:#fff}
+.hl i>div{position:absolute;inset:3px;border-radius:50%;overflow:hidden}
+.igtabs{display:flex;border-top:1px solid #efefef}
+.igtabs span{flex:1;text-align:center;padding:9px 0;border-bottom:1.5px solid #111;font-size:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.cell{position:relative;aspect-ratio:4/5;overflow:hidden;background:#eee;border:0;padding:0;cursor:pointer}
+.cell>.tplbox,.mini>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.cell img,.mini img{width:100%;height:100%;object-fit:cover;display:block}
+.fpost{border-bottom:1px solid #efefef;padding-bottom:10px}
+.fhead{display:flex;align-items:center;gap:10px;padding:10px 12px;font-weight:600;font-size:14px}
+.fhead img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.fimg{position:relative;overflow:hidden;background:#eee}
+.fimg>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0}
+.fact{display:flex;gap:14px;padding:10px 12px 4px}
+.fact svg{width:24px;height:24px}
+.fact .sp{flex:1}
+.fcap{padding:0 12px;font-size:14px;line-height:1.35}
+.liked{animation:likepop .5s ease}
+@keyframes likepop{50%{transform:scale(1.3)}}
+.sto{position:absolute;inset:0;background:#000;z-index:5;touch-action:none}
+.sto[hidden]{display:none}
+.sbars{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));left:10px;right:10px;display:flex;gap:3px;z-index:7}
+.sbars i{flex:1;height:2.5px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.sbars i b{display:block;height:100%;width:0;background:#fff}
+.stage2{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage2>.sw{position:relative;overflow:hidden}
+.stage2>.sw>.tplbox{position:absolute;left:0;top:0;transform-origin:0 0}
+.stap{position:absolute;top:0;bottom:60px;width:35%;z-index:6;background:none;border:0;cursor:pointer}
+.stap.l{left:0}.stap.r{right:0;width:65%}
+.sx{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));right:8px;z-index:8;background:none;border:0;color:#fff;font-size:26px;cursor:pointer;min-width:40px;min-height:40px}
+.sfoot{position:absolute;left:10px;right:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:7;display:flex;gap:10px;align-items:center}
+.sfoot span{flex:1;border:1px solid rgba(255,255,255,.6);border-radius:999px;color:#fff;font-size:14px;padding:10px 14px}
+.sfoot svg{width:26px;height:26px}
+.sname{display:none}
+.stage2 [style*="top:12px;left:12px;right:12px;display:flex;gap:4px"]{display:none!important}
+.ig.storying .igclose{display:none}
+@media (max-width:640px){.igtop .igicons{display:none}}
+
+</style>
+<style id="tplStyles"></style>
+</head>
+<body>
+<div class="wrap" id="main">
+  <span class="poh">poh<i aria-hidden="true"></i> marketing</span>
+  <div class="state" id="state">A carregar…</div>
+  <div id="content" hidden style="display:flex;flex-direction:column;gap:32px">
+    <section class="hero">
+      <img id="cLogo" alt="">
+      <p class="kick">PREPARADO PARA</p>
+      <h1 id="cName"></h1>
+      <p id="cIntro"></p>
+      <div class="ctas">
+        <button class="btn b1" type="button" id="openIG">📱 Ver como fica o vosso Instagram</button>
+        <a class="btn wa" id="wa" target="_blank" rel="noopener">Falar comigo no WhatsApp</a>
+      </div>
+    </section>
+    <section class="sec" id="sStories"><h2>Stories</h2><div class="gal" id="gStories"></div></section>
+    <section class="sec" id="sPosts"><h2>Posts</h2><div class="gal" id="gPosts"></div></section>
+    <div class="foot"><p style="margin:0">Feito pela poh marketing · Porto</p><a class="btn" href="./" target="_blank" rel="noopener">Conhecer a poh marketing</a></div>
+  </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Exemplo em grande">
+  <div class="st" id="lbSt"></div>
+  <button class="nav pv" type="button" id="lbPrev" aria-label="Anterior">‹</button><button class="nav nx" type="button" id="lbNext" aria-label="Seguinte">›</button>
+  <button class="x" type="button" id="lbX" aria-label="Fechar">✕</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<div class="ig" id="ig" hidden role="dialog" aria-modal="true" aria-label="Simulação do Instagram">
+  <button class="igclose" type="button" id="igClose" aria-label="Fechar simulação">✕</button>
+  <div class="igside"><p class="kick" style="color:#4CC9F0;font-size:12px;font-weight:800;letter-spacing:.2em;margin:0">SIMULAÇÃO</p><h2 id="igTitle">Assim pode ficar o vosso Instagram.</h2><p>Toque na foto de perfil ou nos destaques para ver os stories. Toque num post para ver o feed.</p><button class="btn" type="button" id="igPlay">▶ Ver stories</button></div>
+  <div class="phone" id="phone"><div class="screen" id="screen">
+    <div class="view" id="vProfile"></div>
+    <div class="view" id="vFeed" hidden></div>
+    <div class="sto" id="sto" hidden>
+      <div class="sbars" id="sbars"></div>
+      <div class="stage2" id="stage2"></div>
+      <button class="stap l" type="button" id="sPrev" aria-label="Story anterior"></button><button class="stap r" type="button" id="sNext" aria-label="Story seguinte"></button>
+      <button class="sx" type="button" id="sX" aria-label="Fechar stories">✕</button>
+      <div class="sname" id="sName"></div>
+      <div class="sfoot"><span>Enviar mensagem</span><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></div>
+    </div>
+  </div></div>
+</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const safeUrl=u=>/^https:\/\//i.test(String(u||''))?u:'';
+  const slug=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  function freeze(root,play){try{(root.getAnimations?root.getAnimations({subtree:true}):[]).forEach(a=>{if(play){a.play()}else{a.pause();a.currentTime=4500}})}catch(e){}}
+  function tplNode(m){const box=document.createElement('div');box.className='tplbox tpl-'+m.estilo;box.innerHTML=m.html;return box}
+  function showImg(src,cap){window.open(src,'_blank')}
+  let rows=[],modelos=[],D=null;
+  /* ---------- Simulador Instagram ---------- */
+  const IGI={heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>',com:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>',send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>',save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'};
+  let IG=null;
+  const capOf=t=>String(t||'').replace(/^(Story|Post)\s*\d+\s*·\s*/i,'').replace(/\s*\([^)]*\)\s*/g,' ').trim();
+  function igUser(r){const ig=(r.redes||[]).find(x=>/instagram/i.test(x.rede)&&safeUrl(x.url));if(ig){const m=ig.url.match(/instagram\.com\/([A-Za-z0-9._]+)/);if(m)return m[1]}return slug(r.nome).replace(/-/g,'')}
+  function miniNode(m,W,H,play){const box=tplNode(m);const s=Math.max(W/m.w,H/m.h);box.style.transformOrigin='0 0';box.style.position='absolute';box.style.transform=`scale(${s})`;box.style.left=((W-m.w*s)/2)+'px';box.style.top=((H-m.h*s)/2)+'px';if(!play)requestAnimationFrame(()=>freeze(box,false));return box}
+  function sizePhone(){const ph=$('#phone');if(innerWidth<=640){ph.style.width=innerWidth+'px';ph.style.height=innerHeight+'px';return}const h=Math.min(860,innerHeight-40);ph.style.height=h+'px';ph.style.width=Math.round(h*0.47)+'px'}
+  function openIG(id){
+    const r=rows.find(x=>x._id===id);if(!r)return;
+    const mine=modelos.filter(m=>m.cliente===id).sort((a,b)=>a.ordem-b.ordem);
+    const natal=m=>(m.grupo||'').startsWith('Natal');
+    const posts=mine.filter(m=>m.tipo==='Post').sort((a,b)=>(natal(b)-natal(a))||(a.ordem-b.ordem));
+    const storiesBase=mine.filter(m=>m.tipo==='Story'&&!natal(m)),storiesNatal=mine.filter(m=>m.tipo==='Story'&&natal(m));
+    const exPosts=!posts.length?(r.exemplos||[]).filter(e=>e.tipo!=='Story'):[];
+    IG={r,user:igUser(r),posts,exPosts,groups:[storiesNatal.length?{nome:'Natal',items:storiesNatal}:null,storiesBase.length?{nome:'Destaques',items:storiesBase}:null].filter(Boolean)};
+    $('#igTitle').textContent='Assim pode ficar o Instagram do '+r.nome+'.';
+    $('#ig').hidden=false;document.body.style.overflow='hidden';sizePhone();renderProfile();$('#igClose').focus();
+  }
+  function renderProfile(){
+    const {r,user,posts,exPosts,groups}=IG;const v=$('#vProfile');const W=$('#screen').clientWidth;const cw=(W-4)/3,chh=cw*5/4;
+    const n=posts.length||exPosts.length;
+    v.innerHTML=`<div class="igtop"><span style="flex:1">${esc(user)} ⌄</span><span class="igicons" aria-hidden="true">＋ ☰</span></div>
+      <div class="igh"><button class="ring" type="button" id="igRing" aria-label="Ver stories de ${esc(r.nome)}">${r.logo?`<img src="${esc(r.logo)}" alt="">`:''}</button>
+      <div class="igstats"><div><b>${n}</b>publicações</div><div><b>${groups.reduce((s,g)=>s+g.items.length,0)}</b>stories</div><div><b>${groups.length}</b>destaques</div></div></div>
+      <div class="igbio"><b>${esc(r.nome)}</b><span>${esc([r.tipo,r.zona].filter(Boolean).join(' · '))}</span>${r.horario&&/\d/.test(r.horario)&&!/n[ãa]o /i.test(r.horario)?`<div>🕒 ${esc(r.horario)}</div>`:''}${r.telefone?`<div>📞 ${esc(r.telefone)}</div>`:''}${r.morada?`<div>📍 ${esc(r.morada)}</div>`:''}</div>
+      <div class="igbtns"><span>Seguir</span><span>Mensagem</span><span>Ligar</span></div>
+      <div class="hl" id="igHl">${groups.map((g,i)=>`<button type="button" data-g="${i}"><i><div></div></i>${esc(g.nome)}</button>`).join('')}</div>
+      <div class="igtabs" aria-hidden="true"><span>▦</span></div>
+      <div class="grid3" id="igGrid"></div>`;
+    v.querySelectorAll('#igHl [data-g]').forEach(b=>{const g=groups[b.dataset.g];const d=b.querySelector('i>div');d.appendChild(miniNode(g.items[0],56,56,false));d.firstChild.style.position='absolute'});
+    const grid=v.querySelector('#igGrid');
+    posts.forEach((m,i)=>{const c=document.createElement('button');c.type='button';c.className='cell';c.dataset.i=i;c.setAttribute('aria-label','Ver post: '+capOf(m.titulo));c.style.height=chh+'px';c.appendChild(miniNode(m,cw,chh,false));grid.appendChild(c)});
+    exPosts.forEach((e,i)=>{const c=document.createElement('button');c.type='button';c.className='cell';c.dataset.x=i;c.innerHTML=`<img src="${esc(e.img)}" alt="${esc(e.titulo)}">`;grid.appendChild(c)});
+    v.scrollTop=0;$('#vProfile').hidden=false;$('#vFeed').hidden=true;
+  }
+  function renderFeed(start){
+    const {r,user,posts}=IG;const v=$('#vFeed');const W=$('#screen').clientWidth;
+    v.innerHTML=`<div class="igtop"><button type="button" id="igBack" aria-label="Voltar ao perfil">‹</button><span>Publicações</span></div>`;
+    posts.forEach((m,i)=>{const H=W*m.h/m.w;const el=document.createElement('article');el.className='fpost';el.id='fp'+i;
+      el.innerHTML=`<div class="fhead">${r.logo?`<img src="${esc(r.logo)}" alt="">`:''}<span>${esc(user)}</span></div><div class="fimg" style="height:${H}px"></div><div class="fact"><button type="button" class="lk" aria-label="Gosto" style="border:0;background:none;padding:0;cursor:pointer;color:#111">${IGI.heart}</button>${IGI.com}${IGI.send}<span class="sp"></span>${IGI.save}</div><div class="fcap"><b>${esc(user)}</b> ${esc(capOf(m.titulo))}</div>`;
+      el.querySelector('.fimg').appendChild(miniNode(m,W,H,false));v.appendChild(el)});
+    $('#vProfile').hidden=true;v.hidden=false;requestAnimationFrame(()=>{const t=document.getElementById('fp'+start);v.scrollTop=t?t.offsetTop-50:0});
+  }
+  $('#screen').addEventListener('click',e=>{
+    if(e.target.closest('#igRing')){playStories([].concat(...IG.groups.slice().reverse().map(g=>g.items)));return}
+    const g=e.target.closest('#igHl [data-g]');if(g){playStories(IG.groups[g.dataset.g].items);return}
+    const c=e.target.closest('.cell[data-i]');if(c){renderFeed(Number(c.dataset.i));return}
+    const x=e.target.closest('.cell[data-x]');if(x){const ex=IG.exPosts[x.dataset.x];showImg(ex.img,ex.titulo);return}
+    if(e.target.closest('#igBack')){$('#vFeed').hidden=true;$('#vProfile').hidden=false;return}
+    const lk=e.target.closest('.lk');if(lk){lk.style.color=lk.style.color==='rgb(237, 73, 86)'?'#111':'#ed4956';lk.querySelector('svg').setAttribute('fill',lk.style.color==='rgb(237, 73, 86)'?'#ed4956':'none');lk.classList.remove('liked');void lk.offsetWidth;lk.classList.add('liked')}
+  });
+  $('#vFeed').addEventListener('dblclick',e=>{const f=e.target.closest('.fpost');if(f)f.querySelector('.lk').click()});
+  /* stories */
+  let SQ=[],SI=0,STimer=null,SStart=0,SPaused=0,SDur=7000;
+  function playStories(list){if(!list.length)return;SQ=list;SI=0;$('#sto').hidden=false;$('#ig').classList.add('storying');$('#sbars').innerHTML=SQ.map(()=>'<i><b></b></i>').join('');showStory()}
+  function showStory(){
+    cancelAnimationFrame(STimer);const st=$('#stage2');st.innerHTML='';const m=SQ[SI];
+    const W=$('#screen').clientWidth,H=$('#screen').clientHeight;const s=Math.min(W/m.w,H/m.h);
+    const sw=document.createElement('div');sw.className='sw';sw.style.width=m.w*s+'px';sw.style.height=m.h*s+'px';const box=tplNode(m);box.style.transform=`scale(${s})`;sw.appendChild(box);st.appendChild(sw);
+    requestAnimationFrame(()=>{const top=sw.offsetTop;$('#sbars').style.top=(top+10*s)+'px';$('#sbars').style.left=(sw.offsetLeft+10*s)+'px';$('#sbars').style.right=(sw.offsetLeft+10*s)+'px';$('#sX').style.top=(top+22*s)+'px'});
+    [...$('#sbars').children].forEach((b,i)=>b.firstChild.style.width=i<SI?'100%':'0');
+    SStart=performance.now();SPaused=0;tick();
+  }
+  function tick(){STimer=requestAnimationFrame(()=>{if(SPaused){tick();return}const p=Math.min(1,(performance.now()-SStart)/SDur);const b=$('#sbars').children[SI];if(b)b.firstChild.style.width=(p*100)+'%';if(p>=1)nextStory();else tick()})}
+  function nextStory(){if(SI<SQ.length-1){SI++;showStory()}else closeStories()}
+  function prevStory(){if(SI>0){SI--;showStory()}else showStory()}
+  function closeStories(){cancelAnimationFrame(STimer);$('#ig').classList.remove('storying');$('#sto').hidden=true;$('#stage2').innerHTML=''}
+  $('#sNext').addEventListener('click',nextStory);$('#sPrev').addEventListener('click',prevStory);$('#sX').addEventListener('click',closeStories);
+  let holdT=0,ty0=null;
+  $('#sto').addEventListener('pointerdown',e=>{holdT=performance.now();ty0=e.clientY;SPaused=performance.now()});
+  $('#sto').addEventListener('pointerup',e=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}if(ty0!=null&&e.clientY-ty0>90)closeStories();ty0=null});
+  $('#sto').addEventListener('pointercancel',()=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}});
+  function closeIG(){closeStories();$('#ig').hidden=true;$('#vProfile').innerHTML='';$('#vFeed').innerHTML='';document.body.style.overflow=''}
+  $('#igClose').addEventListener('click',closeIG);
+  $('#igPlay').addEventListener('click',()=>playStories([].concat(...IG.groups.slice().reverse().map(g=>g.items))));
+  document.addEventListener('keydown',e=>{if($('#ig').hidden)return;if(e.key==='Escape'){if(!$('#sto').hidden)closeStories();else closeIG()}if(!$('#sto').hidden){if(e.key==='ArrowRight')nextStory();if(e.key==='ArrowLeft')prevStory()}});
+  window.addEventListener('resize',()=>{if(!$('#ig').hidden){sizePhone();if(!$('#sto').hidden)showStory();else if(!$('#vProfile').hidden)renderProfile()}});
+
+  /* ---------- Galeria ---------- */
+  const capOf2=t=>String(t||'').replace(/^(Story|Post)\s*\d+\s*·\s*/i,'').replace(/\s*\([^)]*\)\s*/g,' ').trim();
+  let LB=[],LI=0;
+  function gallery(el,list){
+    list.forEach((m,i)=>{const W=Math.min(200,el.clientWidth/2||160);const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver em grande: '+capOf2(m.titulo));
+      const fr=document.createElement('div');fr.className='fr';b.appendChild(fr);b.insertAdjacentHTML('beforeend',`<span>${esc(capOf2(m.titulo))}</span>`);el.appendChild(b);
+      requestAnimationFrame(()=>{const w=fr.clientWidth,h=w*m.h/m.w;fr.style.height=h+'px';const n=tplNode(m);n.style.transform=`scale(${w/m.w})`;fr.appendChild(n);freeze(n,false)});
+      b.addEventListener('click',()=>openLB(list,i));
+    });
+  }
+  function openLB(list,i){LB=list;LI=i;$('#lb').hidden=false;document.body.style.overflow='hidden';drawLB();$('#lbX').focus()}
+  function drawLB(){const m=LB[LI];const st=$('#lbSt');st.innerHTML='';const s=Math.min(innerWidth/m.w,(innerHeight-60)/m.h);st.style.width=m.w*s+'px';st.style.height=m.h*s+'px';const n=tplNode(m);n.style.transform=`scale(${s})`;st.appendChild(n);$('#lbCap').textContent=capOf2(m.titulo)+' · '+(LI+1)+'/'+LB.length;$('#lbPrev').hidden=LI===0;$('#lbNext').hidden=LI===LB.length-1}
+  function closeLB(){$('#lb').hidden=true;$('#lbSt').innerHTML='';document.body.style.overflow=''}
+  $('#lbPrev').addEventListener('click',()=>{if(LI>0){LI--;drawLB()}});$('#lbNext').addEventListener('click',()=>{if(LI<LB.length-1){LI++;drawLB()}});$('#lbX').addEventListener('click',closeLB);
+  let lx=null;$('#lb').addEventListener('touchstart',e=>{lx=e.touches[0].clientX},{passive:true});$('#lb').addEventListener('touchend',e=>{if(lx==null)return;const dx=e.changedTouches[0].clientX-lx;if(dx<-50&&LI<LB.length-1){LI++;drawLB()}if(dx>50&&LI>0){LI--;drawLB()}lx=null});
+  document.addEventListener('keydown',e=>{if($('#lb').hidden)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight'&&LI<LB.length-1){LI++;drawLB()}if(e.key==='ArrowLeft'&&LI>0){LI--;drawLB()}});
+  /* ---------- Carregar ---------- */
+  (async()=>{
+    const id=(location.hash.slice(1)||new URLSearchParams(location.search).get('p')||'').replace(/[^a-z0-9-]/gi,'');
+    if(!id){$('#state').textContent='Link incompleto.';return}
+    for(const u of ['p/'+id+'.json?t='+Date.now(),'https://raw.githubusercontent.com/afonsojmacedo-blip/pohmarketing/main/p/'+id+'.json?t='+Date.now()]){try{const r=await fetch(u,{cache:'no-store'});if(r.ok){D=await r.json();break}}catch(e){}}
+    if(!D){$('#state').textContent='Este link já não está disponível. Fale connosco: 919 313 540.';return}
+    $('#tplStyles').textContent=Object.values(D.estilos||{}).join('\n');
+    const c=D.cliente;c._id='c';rows=[c];modelos=(D.modelos||[]).map(m=>({...m,cliente:'c'}));
+    document.title=c.nome+' · Proposta poh marketing';
+    $('#cLogo').src=c.logo||'';$('#cLogo').alt='Logótipo '+c.nome;$('#cLogo').hidden=!c.logo;$('#cName').textContent=c.nome;
+    $('#cIntro').textContent=D.intro||'Preparei estes exemplos a pensar no vosso negócio. Veja como pode ficar o vosso Instagram, com stories e posts nas vossas cores.';
+    $('#wa').href='https://wa.me/351919313540?text='+encodeURIComponent('Olá Afonso! Vi os exemplos que preparaste para o '+c.nome+'.');
+    const st=modelos.filter(m=>m.tipo==='Story').sort((a,b)=>a.ordem-b.ordem),po=modelos.filter(m=>m.tipo!=='Story').sort((a,b)=>a.ordem-b.ordem);
+    $('#state').hidden=true;$('#content').hidden=false;$('#content').style.display='flex';
+    $('#sStories').hidden=!st.length;$('#sPosts').hidden=!po.length;
+    gallery($('#gStories'),st);gallery($('#gPosts'),po);
+    $('#openIG').hidden=!modelos.length;$('#openIG').addEventListener('click',()=>openIG('c'));
+  })();
+})();
+</script>
+</body>
+</html>

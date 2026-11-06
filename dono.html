@@ -180,8 +180,22 @@ button,select,input,textarea{font:inherit;color:inherit}
 .brand .dot,.lockbox .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CC9F0;margin-left:2px;vertical-align:top}
 .savest{border:0;background:none;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;padding:6px 4px;min-height:40px}
 .savest[data-k="ok"]{color:var(--ok)}.savest[data-k="err"],.savest[data-k="badtoken"],.savest[data-k="notoken"]{color:var(--bad);text-decoration:underline}
+/* Modo cliente */
+.cm{position:fixed;inset:0;z-index:70;background:#0A1022;color:#EEF2FB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px 16px calc(24px + env(safe-area-inset-bottom,0px));text-align:center}
+.cm[hidden]{display:none}
+.cm .poh{font-family:var(--display);font-weight:800;font-size:22px;position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:0;right:0}
+.cm .poh i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CC9F0;margin-left:2px;vertical-align:top}
+.cm img.cl{width:120px;height:120px;border-radius:28px;object-fit:cover;background:#fff}
+.cm h2{color:#fff;font-size:clamp(28px,5vw,44px)}
+.cm .big{display:flex;flex-direction:column;gap:12px;width:min(360px,100%)}
+.cm .big button{min-height:58px;border-radius:16px;border:0;font-weight:800;font-size:17px;cursor:pointer}
+.cm .big .b1{background:#fff;color:#0A1022}.cm .big .b2{background:#ffffff14;color:#fff;border:1px solid #ffffff33}
+.cm .out{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:14px;background:none;border:0;color:#ffffff55;font-size:13px;cursor:pointer;min-height:40px;padding:0 10px}
+.cm form{display:flex;flex-direction:column;gap:8px;width:min(320px,100%)}
+.cm form input{border:1px solid #ffffff33;background:#ffffff10;color:#fff;border-radius:12px;padding:12px;font-size:16px}
+.cm form p{margin:0;color:#F0707A;font-weight:600;min-height:1.3em;font-size:14px}
 /* Simulador Instagram */
-.ig{position:fixed;inset:0;z-index:80;background:rgba(6,9,18,.92);display:flex;align-items:center;justify-content:center;gap:28px;padding:20px}
+.ig{position:fixed;inset:0;z-index:80;background:#0A1022;display:flex;align-items:center;justify-content:center;gap:28px;padding:20px}
 .ig[hidden]{display:none}
 .phone{position:relative;background:#000;border-radius:44px;border:10px solid #1b1b1f;box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 0 2px #333;overflow:hidden;flex:0 0 auto}
 .screen{position:absolute;inset:0;background:#fff;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;overflow:hidden}
@@ -264,7 +278,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
 .viewer .cap button{background:#fff;color:#000;border:0;border-radius:8px;padding:6px 12px;font-weight:700;cursor:pointer}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;z-index:100;max-width:calc(100vw - 32px)}
 /* Apresentação */
-.deck{position:fixed;inset:0;background:#0A1022;color:#EEF2FB;z-index:50;display:flex;flex-direction:column}
+.deck{position:fixed;inset:0;background:#0A1022;color:#EEF2FB;z-index:75;display:flex;flex-direction:column}
 .deck[hidden]{display:none}
 .deck-top{display:flex;justify-content:space-between;align-items:center;padding:12px max(16px,env(safe-area-inset-left,0px));gap:10px}
 .deck-top .poh{font-family:var(--display);font-weight:800;font-size:20px}
@@ -425,6 +439,14 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   </form>
 </dialog>
 
+<div class="cm" id="cm" hidden role="dialog" aria-modal="true" aria-label="Modo cliente">
+  <span class="poh">poh<i aria-hidden="true"></i> marketing</span>
+  <img class="cl" id="cmLogo" alt="">
+  <h2 id="cmName"></h2>
+  <div class="big" id="cmBig"><button type="button" class="b1" id="cmIG">📱 Ver o vosso Instagram</button><button type="button" class="b2" id="cmDeck">▶ Ver a apresentação</button></div>
+  <form id="cmForm" hidden autocomplete="off"><label for="cmPw" style="font-size:14px;color:#C9D3EA">Palavra-passe para sair do modo cliente</label><input id="cmPw" type="password" autocomplete="off"><p id="cmMsg" role="status"></p><div style="display:flex;gap:8px"><button type="button" class="btn" id="cmCancel" style="flex:1">Cancelar</button><button type="submit" class="btn primary" style="flex:1">Sair</button></div></form>
+  <button type="button" class="out" id="cmOut">Sair do modo cliente</button>
+</div>
 <div class="ig" id="ig" hidden role="dialog" aria-modal="true" aria-label="Simulação do Instagram">
   <button class="igclose" type="button" id="igClose" aria-label="Fechar simulação">✕</button>
   <div class="igside"><p class="kick" style="color:#4CC9F0;font-size:12px;font-weight:800;letter-spacing:.2em;margin:0">SIMULAÇÃO</p><h2 id="igTitle">Assim pode ficar o vosso Instagram.</h2><p>Toca na foto de perfil ou nos destaques para ver os stories. Toca num post para ver o feed.</p><button class="btn" type="button" id="igPlay">▶ Ver stories</button></div>
@@ -441,6 +463,15 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     </div>
   </div></div>
 </div>
+<dialog id="share" aria-labelledby="share-title">
+  <div class="dlg">
+    <h2 id="share-title">Link para o cliente</h2>
+    <p style="margin:0">Uma página só com os exemplos deste negócio e o simulador do Instagram, sem nenhum outro cliente nem as tuas notas. Quem tiver o link consegue vê-la.</p>
+    <div id="shBody"></div>
+    <p id="shMsg" role="status" style="margin:0;font-weight:600;font-size:14px"></p>
+    <div class="acts"><button class="btn" type="button" id="shClose">Fechar</button></div>
+  </div>
+</dialog>
 <dialog id="setup" aria-labelledby="setup-title">
   <form class="dlg" id="setupForm">
     <h2 id="setup-title">Ligar a tua chave GitHub (só uma vez)</h2>
@@ -554,7 +585,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
       <div class="right"><span class="pill" style="background:var(--s-${est})">${esc(estadoNome(est))}</span>${r.prioridade?`<span class="prio">Prioridade ${esc(r.prioridade)}</span>`:''}</div></summary>
       <div class="body">
         <div class="tools">
-          <button type="button" class="btn primary" data-act="ig">📱 Ver como Instagram</button><button type="button" class="btn" data-act="apresentar">Apresentar ao cliente</button>
+          <button type="button" class="btn primary" data-act="cliente">🎬 Mostrar ao cliente</button><button type="button" class="btn" data-act="share">🔗 Link para enviar</button>
           ${nMod?`<button type="button" class="btn" data-act="estudio">Editar conteúdos (${nMod})</button>`:''}
           ${canEdit?`<label for="st-${esc(id)}">Estado</label><select id="st-${esc(id)}" data-act="estado">${ESTADOS.map(e=>`<option value="${e.id}"${e.id===est?' selected':''}>${esc(e.nome)}</option>`).join('')}</select><button type="button" class="btn" data-act="editar">Editar ficha</button>`:''}
         </div>
@@ -587,6 +618,8 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     if(a.dataset.act==='exemplo'){exTarget=id;$('#ex-file').value='';$('#ex-file').click()}
     if(a.dataset.act==='apresentar')openDeck(id);
     if(a.dataset.act==='ig')openIG(id);
+    if(a.dataset.act==='cliente')clientMode(id);
+    if(a.dataset.act==='share')openShare(id);
     if(a.dataset.act==='estudio'){sCli=id;store.set('poh-scli',id);setTab('estudio')}
   });
   function showImg(src,cap){$('#v-img').src=src;$('#v-img').alt=cap;$('#v-cap').textContent=cap;$('#viewer').showModal()}
@@ -643,7 +676,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     $('#deck').hidden=false;document.body.style.overflow='hidden';goSlide(0);$('#dClose').focus();
   }
   function goSlide(i){slideIdx=Math.max(0,Math.min(slideN-1,i));document.querySelectorAll('#slides .slide').forEach((s,k)=>{s.classList.toggle('on',k===slideIdx);s.setAttribute('aria-hidden',String(k!==slideIdx))});document.querySelectorAll('#dots i').forEach((d,k)=>d.classList.toggle('on',k===slideIdx));$('#dPrev').disabled=slideIdx===0;$('#dNext').textContent=slideIdx===slideN-1?'Fechar':'Seguinte ›'}
-  function closeDeck(){$('#deck').hidden=true;document.body.style.overflow=''}
+  function closeDeck(){$('#deck').hidden=true;if(!CM)document.body.style.overflow=''}
   $('#dPrev').addEventListener('click',()=>goSlide(slideIdx-1));
   $('#dNext').addEventListener('click',()=>slideIdx===slideN-1?closeDeck():goSlide(slideIdx+1));
   $('#dClose').addEventListener('click',closeDeck);
@@ -780,6 +813,63 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   $('#fDesp').addEventListener('submit',async e=>{e.preventDefault();const F=fdoc();await saveF({despesas:(F.despesas||[]).concat([{id:Date.now().toString(36),desc:$('#dDesc').value.trim(),valor:num($('#dVal').value)}])});$('#dDesc').value='';$('#dVal').value=''});
 
 
+
+
+  /* ---------- Link para o cliente ---------- */
+  const SITE='https://afonsojmacedo-blip.github.io/pohmarketing/';
+  let SH=null;
+  const shUrl=sl=>SITE+'ver.html#'+sl;
+  function openShare(id){SH=id;$('#shMsg').textContent='';drawShare();$('#share').showModal()}
+  function drawShare(){
+    const r=rows.find(x=>x._id===SH);const sh=r.partilha;$('#share-title').textContent='Link para '+r.nome;
+    if(!sh){$('#shBody').innerHTML=`<button class="btn primary" type="button" id="shMake">Criar link</button>`;return}
+    const url=shUrl(sh.slug);const when=sh.data?new Date(sh.data).toLocaleDateString('pt-PT'):'';
+    $('#shBody').innerHTML=`<div class="f"><label class="full">Link<input id="shUrl" readonly value="${esc(url)}"></label></div>
+      <div class="bar" style="margin-top:10px"><button class="btn primary" type="button" id="shCopy">Copiar link</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Preparei estes exemplos para o '+r.nome+': '+url)}">Enviar por WhatsApp</a><a class="btn" target="_blank" rel="noopener" href="${esc(url)}">Abrir</a></div>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0">Atualizado a ${esc(when)}. Se mudares algum post no Estúdio, carrega em “Atualizar link” para o cliente ver a versão nova.</p>
+      <div class="bar" style="margin-top:8px"><button class="btn sm" type="button" id="shMake">Atualizar link</button><button class="btn sm" type="button" id="shOff">Desativar link</button></div>`;
+  }
+  async function makeShare(){
+    const r=rows.find(x=>x._id===SH);if(!TOKEN){openSetup();return}
+    const mine=modelos.filter(m=>m.cliente===SH);const est={};mine.forEach(m=>est[m.estilo]=BASE.estilos[m.estilo]||'');
+    const tel=String(r.telefone||'').replace(/\s*\([^)]*\)/g,'').split('·')[0].trim();
+    const hor=r.horario&&/\d/.test(r.horario)&&!/n[ãa]o /i.test(r.horario)?r.horario:'';
+    const cli={nome:r.nome,logo:r.logo||'',tipo:r.tipo||'',zona:r.zona||'',telefone:tel,morada:r.morada||'',horario:hor,redes:(r.redes||[]).filter(x=>/instagram/i.test(x.rede)&&safeUrl(x.url)).map(x=>({rede:x.rede,url:x.url}))};
+    const payload={v:1,cliente:cli,modelos:mine.map(({_id,cliente,original,copia,...m})=>m),estilos:est};
+    const sl=(r.partilha&&r.partilha.slug)||((slug(r.nome)||'cliente').slice(0,24)+'-'+[...crypto.getRandomValues(new Uint8Array(5))].map(x=>x.toString(36).padStart(2,'0')).join('').slice(0,8));
+    $('#shMsg').style.color='';$('#shMsg').textContent='A criar o link…';
+    try{const path='p/'+sl+'.json';const sha=await ghSha(path);await ghPut(path,tob64(te.encode(JSON.stringify(payload))),sha,'Link para '+r.nome);
+      Data.updCliente(SH,{partilha:{slug:sl,data:new Date().toISOString()}});drawShare();$('#shMsg').textContent='Pronto! O link fica ativo em 1 a 2 minutos.'}
+    catch(e){$('#shMsg').style.color='var(--bad)';$('#shMsg').textContent='Não foi possível criar o link. Tenta outra vez.'}
+  }
+  async function offShare(){
+    const r=rows.find(x=>x._id===SH);if(!r.partilha||!confirm('Desativar este link? Quem o tiver deixa de conseguir ver os exemplos.'))return;
+    try{const path='p/'+r.partilha.slug+'.json';const sha=await ghSha(path);if(sha){const res=await gh(path,{method:'DELETE',body:JSON.stringify({message:'Desativa link '+r.nome,sha,branch:'main'})});if(!res.ok)throw new Error('del')}
+      const c={...S.clientes[SH]};delete c.partilha;S.clientes[SH]=c;changed();drawShare();$('#shMsg').textContent='Link desativado.'}
+    catch(e){$('#shMsg').style.color='var(--bad)';$('#shMsg').textContent='Não foi possível desativar. Tenta outra vez.'}
+  }
+  $('#shBody').addEventListener('click',async e=>{
+    if(e.target.closest('#shMake'))makeShare();
+    if(e.target.closest('#shOff'))offShare();
+    if(e.target.closest('#shCopy')){const u=$('#shUrl').value;try{await navigator.clipboard.writeText(u);$('#shMsg').textContent='Link copiado.'}catch(err){$('#shUrl').select();document.execCommand('copy');$('#shMsg').textContent='Link copiado.'}}
+  });
+  $('#shClose').addEventListener('click',()=>$('#share').close());
+  /* ---------- Modo cliente ---------- */
+  let CM=null,CURPW='';
+  function clientMode(id){
+    const r=rows.find(x=>x._id===id);if(!r)return;CM=id;
+    $('#cmLogo').src=r.logo||'';$('#cmLogo').alt='Logótipo '+r.nome;$('#cmLogo').hidden=!r.logo;$('#cmName').textContent=r.nome;
+    $('#cmIG').hidden=!modelos.some(m=>m.cliente===id)&&!(r.exemplos||[]).length;
+    $('#cmForm').hidden=true;$('#cmBig').hidden=false;$('#cmOut').hidden=false;
+    $('#cm').hidden=false;$('#app').setAttribute('aria-hidden','true');document.body.style.overflow='hidden';
+    try{history.replaceState(null,'','#cliente='+id)}catch(e){}
+  }
+  function exitClientMode(){CM=null;$('#cm').hidden=true;$('#app').removeAttribute('aria-hidden');document.body.style.overflow='';try{history.replaceState(null,'',location.pathname)}catch(e){}}
+  $('#cmIG').addEventListener('click',()=>openIG(CM));
+  $('#cmDeck').addEventListener('click',()=>openDeck(CM));
+  $('#cmOut').addEventListener('click',()=>{$('#cmBig').hidden=true;$('#cmOut').hidden=true;$('#cmForm').hidden=false;$('#cmMsg').textContent='';$('#cmPw').value='';$('#cmPw').focus()});
+  $('#cmCancel').addEventListener('click',()=>{$('#cmForm').hidden=true;$('#cmBig').hidden=false;$('#cmOut').hidden=false});
+  $('#cmForm').addEventListener('submit',e=>{e.preventDefault();if(normPw($('#cmPw').value)===CURPW)exitClientMode();else{$('#cmMsg').textContent='Palavra-passe errada.';$('#cmPw').select()}});
   /* ---------- Simulador Instagram ---------- */
   const IGI={heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>',com:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>',send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>',save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'};
   let IG=null;
@@ -804,7 +894,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     v.innerHTML=`<div class="igtop"><span style="flex:1">${esc(user)} ⌄</span><span class="igicons" aria-hidden="true">＋ ☰</span></div>
       <div class="igh"><button class="ring" type="button" id="igRing" aria-label="Ver stories de ${esc(r.nome)}">${r.logo?`<img src="${esc(r.logo)}" alt="">`:''}</button>
       <div class="igstats"><div><b>${n}</b>publicações</div><div><b>${groups.reduce((s,g)=>s+g.items.length,0)}</b>stories</div><div><b>${groups.length}</b>destaques</div></div></div>
-      <div class="igbio"><b>${esc(r.nome)}</b><span>${esc([r.tipo,r.zona].filter(Boolean).join(' · '))}</span>${r.horario?`<div>🕒 ${esc(r.horario)}</div>`:''}${r.telefone?`<div>📞 ${esc(r.telefone)}</div>`:''}${r.morada?`<div>📍 ${esc(r.morada)}</div>`:''}</div>
+      <div class="igbio"><b>${esc(r.nome)}</b><span>${esc([r.tipo,r.zona].filter(Boolean).join(' · '))}</span>${r.horario&&/\d/.test(r.horario)&&!/n[ãa]o /i.test(r.horario)?`<div>🕒 ${esc(r.horario)}</div>`:''}${r.telefone?`<div>📞 ${esc(r.telefone)}</div>`:''}${r.morada?`<div>📍 ${esc(r.morada)}</div>`:''}</div>
       <div class="igbtns"><span>Seguir</span><span>Mensagem</span><span>Ligar</span></div>
       <div class="hl" id="igHl">${groups.map((g,i)=>`<button type="button" data-g="${i}"><i><div></div></i>${esc(g.nome)}</button>`).join('')}</div>
       <div class="igtabs" aria-hidden="true"><span>▦</span></div>
@@ -852,7 +942,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
   $('#sto').addEventListener('pointerdown',e=>{holdT=performance.now();ty0=e.clientY;SPaused=performance.now()});
   $('#sto').addEventListener('pointerup',e=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}if(ty0!=null&&e.clientY-ty0>90)closeStories();ty0=null});
   $('#sto').addEventListener('pointercancel',()=>{if(SPaused){SStart+=performance.now()-SPaused;SPaused=0}});
-  function closeIG(){closeStories();$('#ig').hidden=true;$('#vProfile').innerHTML='';$('#vFeed').innerHTML='';if($('#deck').hidden)document.body.style.overflow=''}
+  function closeIG(){closeStories();$('#ig').hidden=true;$('#vProfile').innerHTML='';$('#vFeed').innerHTML='';if($('#deck').hidden&&!CM)document.body.style.overflow=''}
   $('#igClose').addEventListener('click',closeIG);
   $('#igPlay').addEventListener('click',()=>playStories([].concat(...IG.groups.slice().reverse().map(g=>g.items))));
   document.addEventListener('keydown',e=>{if($('#ig').hidden)return;if(e.key==='Escape'){if(!$('#sto').hidden)closeStories();else closeIG()}if(!$('#sto').hidden){if(e.key==='ArrowRight')nextStory();if(e.key==='ArrowLeft')prevStory()}});
@@ -951,7 +1041,8 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     canEdit=true;assets=true;
     rebuild();$('#lock').hidden=true;$('#app').hidden=false;$('#add').hidden=false;
     setTab(tab);render();setStatus(TOKEN?'ok':'notoken');
-    if(!TOKEN)setTimeout(openSetup,600);
+    const hm=location.hash.match(/^#cliente=([\w-]+)/);if(hm&&S.clientes[hm[1]])clientMode(hm[1]);
+    else if(!TOKEN)setTimeout(openSetup,600);
     return true;
   }
   async function tryPw(raw,remember,silent){
@@ -959,7 +1050,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     msg.textContent='A abrir…';$('#lockGo').disabled=true;
     try{const ok=await boot(pw);
       if(!ok){msg.textContent='Palavra-passe errada.';store.del('poh-dono-pw');$('#lockPw').select();return}
-      try{sessionStorage.setItem('poh-dono',pw)}catch(e){}
+      CURPW=pw;try{sessionStorage.setItem('poh-dono',pw)}catch(e){}
       if(remember)store.set('poh-dono-pw',pw);msg.textContent='';
     }catch(e){msg.textContent=e.message==='nodata'?'Ainda não há dados no site. Publica o site primeiro.':'Não foi possível abrir. Verifica a internet.'}
     finally{$('#lockGo').disabled=false}

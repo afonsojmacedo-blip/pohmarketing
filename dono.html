@@ -43,6 +43,7 @@
 @font-face{font-family:"DM Serif Display";src:url(dono/fonts/DMSerifDisplay-Regular.ttf) format("truetype")}
 @font-face{font-family:Inter;font-weight:100 900;src:url(dono/fonts/Inter-var.ttf) format("truetype")}
 @font-face{font-family:Oswald;font-weight:200 700;src:url(dono/fonts/Oswald-var.ttf) format("truetype")}
+@font-face{font-family:"Playfair Display";font-weight:400 900;src:url(dono/fonts/PlayfairDisplay-var.ttf) format("truetype")}
 @font-face{font-family:Rye;src:url(dono/fonts/Rye-Regular.ttf) format("truetype")}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -505,7 +506,7 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
 (function(){
   const ESTADOS=[{id:'contactar',nome:'A contactar'},{id:'ligado',nome:'Já liguei'},{id:'reuniao',nome:'Reunião marcada'},{id:'proposta',nome:'Proposta enviada'},{id:'fechado',nome:'Cliente'},{id:'nao',nome:'Não avançou'}];
   const PLANOS={nos:{nome:'Gravamos nós',valor:350,itens:['8 reels por mês','Stories todos os dias','1 sessão de gravação por mês','Planeamento de conteúdo','Calendário de publicações','Relatório mensal']},tu:{nome:'Gravas tu',valor:200,itens:['8 vídeos por mês','8 guias de gravação','Plano de conteúdo','Calendário de publicações','Stories todos os dias','Relatório mensal']},outro:{nome:'Outro',valor:0,itens:[]}};
-  const FONTS={'Anton':['dono/fonts/Anton-Regular.ttf'],'Archivo Black':['dono/fonts/ArchivoBlack-Regular.ttf'],'Barlow Condensed':['dono/fonts/BarlowCondensed-Bold.ttf',700,'dono/fonts/BarlowCondensed-ExtraBold.ttf',800],'Bebas Neue':['dono/fonts/BebasNeue-Regular.ttf'],'DM Serif Display':['dono/fonts/DMSerifDisplay-Regular.ttf'],'Inter':['dono/fonts/Inter-var.ttf','100 900'],'Oswald':['dono/fonts/Oswald-var.ttf','200 700'],'Rye':['dono/fonts/Rye-Regular.ttf']};
+  const FONTS={'Anton':['dono/fonts/Anton-Regular.ttf'],'Archivo Black':['dono/fonts/ArchivoBlack-Regular.ttf'],'Barlow Condensed':['dono/fonts/BarlowCondensed-Bold.ttf',700,'dono/fonts/BarlowCondensed-ExtraBold.ttf',800],'Bebas Neue':['dono/fonts/BebasNeue-Regular.ttf'],'DM Serif Display':['dono/fonts/DMSerifDisplay-Regular.ttf'],'Inter':['dono/fonts/Inter-var.ttf','100 900'],'Oswald':['dono/fonts/Oswald-var.ttf','200 700'],'Rye':['dono/fonts/Rye-Regular.ttf'],'Playfair Display':['dono/fonts/PlayfairDisplay-var.ttf','400 900']};
   const MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1038,9 +1039,11 @@ dialog::backdrop{background:rgba(8,12,24,.6)}
     BASE=await dec(await getStatic('dono/modelos.enc'));
     $('#tplStyles').textContent=Object.values(BASE.estilos).join('\n');
     S.clientes=S.clientes||{};S.edicoes=S.edicoes||{};S.faturas=S.faturas||{};
+    let novos=0;try{const l=await getStatic('dono/import/lista.json');if(l){S.importados=S.importados||[];for(const nm of JSON.parse(l)){if(S.importados.includes(nm))continue;const t=await getStatic('dono/import/'+nm+'.enc');if(!t)continue;const o=await dec(t);Object.entries(o.clientes||{}).forEach(([cid,c])=>{if(!S.clientes[cid]){S.clientes[cid]=c;novos++}});S.importados.push(nm)}}}catch(e){}
     canEdit=true;assets=true;
     rebuild();$('#lock').hidden=true;$('#app').hidden=false;$('#add').hidden=false;
     setTab(tab);render();setStatus(TOKEN?'ok':'notoken');
+    if(novos){queueSave();toast(novos===1?'Novo cliente adicionado':novos+' clientes novos adicionados')}
     const hm=location.hash.match(/^#cliente=([\w-]+)/);if(hm&&S.clientes[hm[1]])clientMode(hm[1]);
     else if(!TOKEN)setTimeout(openSetup,600);
     return true;
